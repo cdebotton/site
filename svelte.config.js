@@ -6,7 +6,7 @@ import { preprocessThrelte } from '@threlte/preprocess';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: [preprocessThrelte(), vitePreprocess()],
+	preprocess: [vitePreprocess(), preprocessThrelte()],
 
 	kit: {
 		adapter: adapter()

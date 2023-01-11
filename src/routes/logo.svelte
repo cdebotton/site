@@ -26,7 +26,9 @@
 
 	h1 [lang='ja'] {
 		font-size: var(--text-sm);
-		letter-spacing: 0.25em;
+		letter-spacing: var(--tracking-widest);
+		padding-inline-start: var(--space-5);
+		color: var(--indigo12);
 	}
 
 	h1 span:not([lang='ja']) {

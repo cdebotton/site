@@ -15,11 +15,10 @@ export const load: LayoutServerLoad = async (event) => {
 		}
 
 		const json = JSON.parse(cookie);
-
+		console.log(json);
 		const theme = schema.parse(json);
 		return { theme };
 	} catch (err) {
-		console.log(err);
 		return { theme: { darkMode: true } };
 	}
 };

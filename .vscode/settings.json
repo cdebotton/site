@@ -2,5 +2,10 @@
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
+	},
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"package.json": "pnpm-lock.yaml",
+		"+*.svelte": "+$(capture).server.ts, +$(capture).ts"
 	}
 }

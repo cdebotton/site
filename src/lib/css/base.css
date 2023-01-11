@@ -1,5 +1,7 @@
 @import '@radix-ui/colors/indigo.css';
 @import '@radix-ui/colors/indigoDark.css';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/mauveDark.css';
 @import '@radix-ui/colors/plum.css';
 @import '@radix-ui/colors/plumDark.css';
 @import '@radix-ui/colors/blue.css';
@@ -55,6 +57,14 @@
 	--space-22: 5.5rem;
 	--space-23: 5.75rem;
 	--space-24: 6rem;
+	--space-25: 6.25rem;
+	--space-26: 6.5rem;
+	--space-27: 6.75rem;
+	--space-28: 7rem;
+	--space-29: 7.25rem;
+	--space-30: 7.5rem;
+	--space-31: 7.75rem;
+	--space-32: 8rem;
 }
 
 * {
@@ -75,6 +85,7 @@ html {
 }
 
 body {
+	font-family: 'Inter var', 'Inter var Fallback';
 	background-color: var(--indigo1);
 	color: var(--indigo12);
 }
@@ -123,4 +134,18 @@ video {
 [lang='ja'] {
 	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo,
 		'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+em {
+	font-style: normal;
+	color: var(--plum11);
+	font-weight: 400;
+}
+
+a {
+	color: var(--mauve9);
+}
+
+a:hover {
+	color: var(--mauve10);
 }
