@@ -28,7 +28,7 @@
 		y = 5 * Math.cos(t);
 	});
 
-	$: color = $theme.darkMode ? indigoDark.indigo4 : indigo.indigo8;
+	$: color = $theme.darkMode ? 'hsl(229, 24.0%, 2%)' : 'hsl(226, 75.4%, 98.5%)';
 
 	let realScale = spring(0);
 

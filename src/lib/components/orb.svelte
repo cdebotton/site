@@ -10,7 +10,7 @@
 
 	import { theme } from '$lib/theme';
 
-	$: color = $theme.darkMode ? plumDark.plum2 : plum.plum8;
+	$: color = $theme.darkMode ? plumDark.plum2 : plum.plum9;
 	$: edgeColor = $theme.darkMode ? plumDark.plum10 : plum.plum11;
 
 	const MIN_Y = 4;
