@@ -1,13 +1,14 @@
 <script>
+	import { indigoDark } from '@radix-ui/colors';
+	import { indigo } from '@radix-ui/colors';
 	import { Canvas, T } from '@threlte/core';
-	import { PCFSoftShadowMap } from 'three';
 	import { spring } from 'svelte/motion';
+	import { PCFSoftShadowMap } from 'three';
 
-	import Box from './box.svelte';
 	import Floor from './floor.svelte';
+	import Orb from './orb.svelte';
 
-	/** @type {import('@threlte/core').ThrelteContext}*/
-	let ctx;
+	import { theme } from '$lib/theme';
 
 	/** @type {import('three').OrthographicCamera | undefined} */
 	let camera;
@@ -24,16 +25,19 @@
 		let x = (event.clientX / window.innerWidth) * (Math.PI * (1 / 4));
 		$cameraY = Math.cos(x);
 	}
+
+	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
 </script>
 
 <svelte:body on:pointermove={moveCamera} />
 
 <Canvas shadows shadowMapType={PCFSoftShadowMap}>
+	<T.Fog attach="fog" near={10} far={48} color={fogColor} density={100} />
+	<T.OrthographicCamera bind:ref={camera} zoom={50} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight />
 	<T.PointLight castShadow position.y={10} intensity={1} />
-	<T.OrthographicCamera bind:ref={camera} zoom={80} makeDefault position={[10, 20, 20]} />
 	<T.Group rotation.y={$cameraY} position.y={-4}>
-		<Box />
+		<Orb />
 		<Floor />
 	</T.Group>
 </Canvas>

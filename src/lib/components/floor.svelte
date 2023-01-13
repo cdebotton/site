@@ -1,9 +1,11 @@
 <script>
+	import { indigo, slate } from '@radix-ui/colors';
 	import { T, InstancedMesh } from '@threlte/core';
 	import { MeshBasicMaterial, PlaneGeometry } from 'three';
-	import { indigo, indigoDark, slate, slateDark } from '@radix-ui/colors';
-	import { theme } from '$lib/theme';
+
 	import Cross from './cross.svelte';
+
+	import { theme } from '$lib/theme';
 
 	export let y = 0;
 
@@ -25,7 +27,7 @@
 
 <T.Group position.y={y}>
 	<T.Mesh position.y={[-0.02]} receiveShadow rotation.x={-Math.PI / 2}>
-		<T.PlaneGeometry args={[20, 20]} />
+		<T.PlaneGeometry args={[100, 100]} />
 		<T.ShadowMaterial opacity={0.2} color={shadowColor} />
 	</T.Mesh>
 	<T.GridHelper args={[100, 100, gridColor, gridColor]} position={[0, -0.01, 0]} />

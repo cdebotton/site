@@ -59,8 +59,8 @@
 
 	.content {
 		position: relative;
-		height: 100%;
 		display: grid;
+		height: 100%;
 		align-content: end;
 		gap: var(--space-12);
 	}
@@ -83,22 +83,22 @@
 
 	p {
 		font-size: var(--text-sm);
-		line-height: calc(var(--leading-body) * 1.15);
 		font-weight: 300;
+		line-height: calc(var(--leading-body) * 1.15);
 	}
 
 	.connect ul {
 		display: flex;
-		gap: var(--space-4);
 		font-size: var(--text-lg);
+		gap: var(--space-4);
 	}
 
 	.connect a {
-		background-color: var(--mauve4);
+		display: inline-block;
 		border-radius: 7px;
+		background-color: var(--mauve4);
 		padding-block: var(--space-2);
 		padding-inline: var(--space-4);
-		display: inline-block;
 	}
 
 	.connect a:hover {
@@ -117,8 +117,8 @@
 
 		p {
 			font-size: var(--text-md);
-			line-height: var(--leading-body);
 			font-weight: 300;
+			line-height: var(--leading-body);
 		}
 
 		.intro,
