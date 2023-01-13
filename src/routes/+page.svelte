@@ -1,5 +1,7 @@
 <script>
 	let sceneLoader = import('$lib/components/scene.svelte');
+	/** @type {string} */
+	let favicon;
 </script>
 
 <svelte:head>
@@ -18,7 +20,7 @@
 
 <div class="content">
 	<div class="intro">
-		<h2>Oh, hello!</h2>
+		<h2>Oh,{'\n'}Hello!</h2>
 		<p>
 			My name's <em>Christian</em> and I'm a software engineer based on San Francisco. Over my
 			decade&#8209;and&#8209;a&#8209;half long career, I've worked on
@@ -50,15 +52,16 @@
 
 	h2 {
 		color: var(--plum11);
-		font-size: var(--text-xl);
+		font-size: var(--text-2xl);
 		font-weight: 800;
-		letter-spacing: var(--tracking-wide);
-		line-height: var(--leading-heading);
-		padding-block-end: var(--space-3);
-		text-decoration: underline;
-		text-decoration-color: var(--plum12);
-		text-decoration-thickness: 2px;
-		text-underline-offset: 5px;
+		letter-spacing: var(--tracking-normal);
+		line-height: var(--leading-none);
+		padding-block-end: var(--space-4);
+		white-space: pre;
+	}
+
+	h2::first-line {
+		font-size: var(--text-xl);
 	}
 
 	p {
@@ -73,9 +76,12 @@
 		}
 
 		h2 {
-			font-size: var(--text-3xl);
-			font-weight: 600;
-			padding-block-end: var(--space-4);
+			font-size: var(--text-4xl);
+			font-weight: 800;
+		}
+
+		h2::first-line {
+			font-size: var(--text-2xl);
 		}
 
 		p {

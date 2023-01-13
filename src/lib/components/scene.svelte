@@ -9,28 +9,38 @@
 	import Orb from './orb.svelte';
 
 	import { theme } from '$lib/theme';
-
-	/** @type {import('three').OrthographicCamera | undefined} */
-	let camera;
-
-	$: camera?.lookAt(0, 0, 0);
-
-	let cameraY = spring(0);
+	import { browser } from '$app/environment';
 
 	/**
 	 * Spin the camera with the mouse movement.
 	 * @param {PointerEvent} event
 	 */
 	function moveCamera(event) {
+		if (isTouch) {
+			return;
+		}
+
 		let x = (event.clientX / window.innerWidth) * Math.PI;
 		$cameraY = Math.cos(x) - Math.PI;
 	}
 
-	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
+	/** @type {boolean} */
+	let isTouch;
+	$: if (browser && matchMedia('not all and (hover: none)').matches) {
+		isTouch = false;
+	} else {
+		isTouch = true;
+	}
 
+	/** @type {import('three').OrthographicCamera | undefined} */
+	let camera;
+	/** @type {import('svelte/motion').Spring<number>} */
+	let cameraY = spring(0);
 	/** @type {number} */
 	let innerWidth;
 
+	$: camera?.lookAt(0, 0, 0);
+	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
 	$: zoom = Math.min(50 * (innerWidth / 600), 50);
 </script>
 

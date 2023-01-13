@@ -25,6 +25,7 @@
 		font-weight: 900;
 		letter-spacing: var(--tracking-tighter);
 		text-transform: uppercase;
+		font-family: inherit;
 	}
 
 	@media not all and (hover: none) {
@@ -35,7 +36,7 @@
 
 	@media screen and (min-width: 480px) {
 		button {
-			font-size: var(--text-xl);
+			font-size: var(--text-lg);
 		}
 	}
 </style>

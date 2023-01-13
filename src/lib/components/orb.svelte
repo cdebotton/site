@@ -48,6 +48,8 @@
 	 * @property {number} index
 	 * @property {number} scale
 	 * @property {number} distance
+	 * @property {number} speed
+	 * @property {number} seed
 	 */
 
 	/**
@@ -58,8 +60,10 @@
 		for (let i = 0; i < count; i += 1) {
 			let moon = {
 				index: count - i,
-				scale: Math.random() * 0.275 + 0.05,
-				distance: Math.random() * 5 + 1
+				scale: Math.random() * 0.378 + 0.015,
+				distance: Math.random() * 5 + 1,
+				speed: (i / count) * 1.2,
+				seed: Math.random() * 5235928
 			};
 
 			yield moon;
@@ -81,7 +85,7 @@
 
 	/** @type {Moon[]} */
 	let moons = [];
-	let time = 250;
+	let time = 50;
 
 	(async () => {
 		for (let moon of moonGenerator(500)) {

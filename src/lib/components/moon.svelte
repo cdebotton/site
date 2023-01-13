@@ -15,6 +15,12 @@
 	/** @type {number} */
 	export let distance;
 
+	/** @type {number} */
+	export let speed;
+
+	/** @type {number} */
+	export let seed;
+
 	const RADIUS = 3;
 
 	let z = 0;
@@ -22,7 +28,7 @@
 	let y = 0;
 
 	useFrame(({ clock }) => {
-		let t = clock.getElapsedTime() * ((index + 1) / 250);
+		let t = clock.getElapsedTime() * speed + seed;
 		z = -(RADIUS + distance) * Math.sin(t);
 		x = -(RADIUS + distance) * Math.cos(t);
 		y = 5 * Math.cos(t);
