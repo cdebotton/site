@@ -38,7 +38,7 @@
 <svelte:body on:pointermove={moveCamera} />
 
 <Canvas shadows shadowMapType={PCFSoftShadowMap}>
-	<T.Fog attach="fog" near={10} far={39} color={fogColor} density={100} />
+	<T.Fog attach="fog" near={20} far={45} color={fogColor} density={100} />
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight />
 	<T.PointLight castShadow position.y={10} intensity={1} />

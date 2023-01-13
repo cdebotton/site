@@ -4,12 +4,7 @@
 	import { Edges } from '@threlte/extras';
 	import { cubicInOut } from 'svelte/easing';
 	import { spring, tweened } from 'svelte/motion';
-	import {
-		OctahedronGeometry,
-		SphereGeometry,
-		MeshToonMaterial,
-		MeshStandardMaterial
-	} from 'three';
+	import { OctahedronGeometry, SphereGeometry, MeshToonMaterial } from 'three';
 
 	import Moon from './moon.svelte';
 
@@ -64,7 +59,7 @@
 			let moon = {
 				index: count - i,
 				scale: Math.random() * 0.275 + 0.05,
-				distance: Math.random() * 4
+				distance: Math.random() * 5 + 1
 			};
 
 			yield moon;

@@ -30,11 +30,11 @@
 
 	$: color = $theme.darkMode ? indigoDark.indigo4 : indigo.indigo8;
 
-	let initScale = spring(0);
+	let realScale = spring(0);
 
 	onMount(() => {
-		initScale.set(scale);
+		realScale.set(scale);
 	});
 </script>
 
-<Instance {color} position={{ z, x, y }} scale={$initScale} />
+<Instance {color} position={{ z, x, y }} scale={$realScale} />
