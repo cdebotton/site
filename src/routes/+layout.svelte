@@ -30,39 +30,39 @@
 		<span class="logo">
 			<Logo />
 		</span>
-		<span class="theme-toggle">
-			<ThemeToggle />
-		</span>
 	</header>
 	<main>
 		<slot />
 	</main>
+	<span class="theme-toggle">
+		<ThemeToggle />
+	</span>
 </div>
 
 <style>
 	div {
 		display: grid;
 		height: 100%;
-		grid-template-rows: min-content auto;
-		padding-inline: var(--space-5);
-		padding-block: var(--space-5);
-		justify-items: center;
 		gap: var(--space-12);
+		grid-template-rows: min-content auto;
+		justify-items: center;
+		padding-block: var(--space-5);
+		padding-inline: var(--space-5);
 	}
 
 	header,
 	main {
-		max-width: 64rem;
-		min-width: 20rem;
 		width: 100%;
+		min-width: 20rem;
+		max-width: 64rem;
 	}
 
 	header {
 		position: relative;
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
 		z-index: 10;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
 	}
 
 	.logo {
@@ -70,13 +70,18 @@
 	}
 
 	.theme-toggle {
-		grid-column: 4;
+		position: absolute;
+		inset: auto var(--space-4) var(--space-8) auto;
 	}
 
 	@media screen and (min-width: 480px) {
 		div {
-			padding-inline: var(--space-8);
 			padding-block: var(--space-8);
+			padding-inline: var(--space-8);
+		}
+
+		.theme-toggle {
+			inset: auto var(--space-10) var(--space-10) auto;
 		}
 	}
 </style>

@@ -10,14 +10,14 @@
 @import '@radix-ui/colors/purpleDark.css';
 
 :root {
-	--text-xs: 0.707rem;
+	--text-xs: 0.8rem;
 	--text-sm: 1rem;
-	--text-md: 1.414rem;
-	--text-lg: 1.999rem;
-	--text-xl: 2.827rem;
-	--text-2xl: 3.997rem;
-	--text-3xl: 5.652rem;
-	--text-4xl: 7.992rem;
+	--text-md: 1.25rem;
+	--text-lg: 1.563rem;
+	--text-xl: 1.953rem;
+	--text-2xl: 2.441rem;
+	--text-3xl: 3.052rem;
+	--text-4xl: 3.815rem;
 
 	--tracking-tighter: -0.075em;
 	--tracking-tight: -0.05em;
@@ -25,11 +25,12 @@
 	--tracking-wide: 0em;
 	--tracking-wider: 0.025em;
 	--tracking-widest: 0.05em;
-	--tracking-thiccc: 0.8em;
+	--tracking-thiccc: 0.11em;
 
 	--leading-squeeze: 0.8;
 	--leading-none: 1;
-	--leading-body: 1.75;
+	--leading-body-tight: 2;
+	--leading-body: 2.25;
 	--leading-heading: 1.125;
 
 	--space-0: 0rem;
@@ -138,8 +139,8 @@ video {
 
 em {
 	font-style: normal;
-	color: var(--plum11);
-	font-weight: 400;
+	color: var(--indigo11);
+	font-weight: 600;
 }
 
 a {

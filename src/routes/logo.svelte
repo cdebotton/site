@@ -25,10 +25,11 @@
 	}
 
 	h1 [lang='ja'] {
-		font-size: var(--text-sm);
-		letter-spacing: var(--tracking-widest);
-		padding-inline-start: var(--space-5);
 		color: var(--indigo12);
+		font-size: var(--text-xs);
+		letter-spacing: var(--tracking-thiccc);
+		padding-block-end: var(--space-1);
+		padding-inline-start: var(--space-5);
 	}
 
 	h1 span:not([lang='ja']) {
@@ -46,7 +47,7 @@
 		);
 		background-size: 400vw 400vh;
 		color: transparent;
-		font-size: var(--text-xl);
+		font-size: var(--text-2xl);
 		font-weight: 900;
 		letter-spacing: var(--tracking-tight);
 		line-height: var(--leading-squeeze);

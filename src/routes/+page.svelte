@@ -53,7 +53,7 @@
 
 <style>
 	.canvas {
-		position: fixed;
+		position: absolute;
 		inset: 0;
 	}
 
@@ -72,19 +72,22 @@
 	}
 
 	h2 {
+		color: var(--plum11);
 		font-size: var(--text-xl);
 		font-weight: 800;
-		letter-spacing: var(--tracking-tight);
+		letter-spacing: var(--tracking-wide);
 		line-height: var(--leading-heading);
 		padding-block-end: var(--space-3);
 		text-decoration: underline;
-		text-decoration-color: var(--plum11);
+		text-decoration-color: var(--plum12);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 5px;
 	}
 
 	p {
 		font-size: var(--text-sm);
 		font-weight: 300;
-		line-height: calc(var(--leading-body) * 1.15);
+		line-height: var(--leading-body-tight);
 	}
 
 	.connect ul {
@@ -101,8 +104,10 @@
 		padding-inline: var(--space-4);
 	}
 
-	.connect a:hover {
-		background-color: var(--mauve5);
+	@media not all and (hover: none) {
+		.connect a:hover {
+			background-color: var(--mauve5);
+		}
 	}
 
 	@media screen and (min-width: 480px) {
@@ -111,19 +116,20 @@
 		}
 
 		h2 {
-			font-size: var(--text-2xl);
-			padding-block-end: var(--space-6);
+			font-size: var(--text-3xl);
+			font-weight: 600;
+			padding-block-end: var(--space-4);
 		}
 
 		p {
 			font-size: var(--text-md);
-			font-weight: 300;
+			font-weight: 200;
 			line-height: var(--leading-body);
 		}
 
 		.intro,
 		.connect {
-			max-width: 64ch;
+			max-width: 48ch;
 		}
 	}
 </style>
