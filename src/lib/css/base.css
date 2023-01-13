@@ -149,3 +149,8 @@ a {
 a:hover {
 	color: var(--mauve10);
 }
+
+::selection {
+	color: var(--purple4);
+	background-color: var(--mauve12);
+}
