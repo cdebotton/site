@@ -87,7 +87,7 @@
 	p {
 		font-size: var(--text-sm);
 		font-weight: 300;
-		line-height: var(--leading-body-tight);
+		line-height: var(--leading-body);
 	}
 
 	.connect ul {
@@ -124,7 +124,6 @@
 		p {
 			font-size: var(--text-md);
 			font-weight: 200;
-			line-height: var(--leading-body);
 		}
 
 		.intro,

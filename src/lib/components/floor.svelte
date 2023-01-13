@@ -1,5 +1,5 @@
 <script>
-	import { indigo, slate } from '@radix-ui/colors';
+	import { indigo, indigoDark, slate, slateDark } from '@radix-ui/colors';
 	import { T, InstancedMesh } from '@threlte/core';
 	import { MeshBasicMaterial, PlaneGeometry } from 'three';
 
@@ -18,8 +18,8 @@
 		});
 	}).flat();
 
-	$: gridColor = $theme.darkMode ? 'hsl(229, 24.0%, 1.95%)' : indigo.indigo7;
-	$: crossColor = $theme.darkMode ? 'hsl(229, 24.0%, 3.83%)' : slate.slate5;
+	$: gridColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
+	$: crossColor = $theme.darkMode ? slateDark.slate2 : slate.slate1;
 	$: shadowColor = $theme.darkMode ? '#000' : indigo.indigo1;
 
 	$: camera?.lookAt(0, 0, 0);

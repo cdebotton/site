@@ -45,7 +45,7 @@
 	drift();
 
 	let geometry = new SphereGeometry();
-	let material = new MeshStandardMaterial({ metalness: 1, roughness: 10 });
+	let material = new MeshToonMaterial();
 
 	/**
 	 * @typedef Moon
@@ -63,7 +63,7 @@
 		for (let i = 0; i < count; i += 1) {
 			let moon = {
 				index: count - i,
-				scale: Math.random() * 0.175 + 0.1,
+				scale: Math.random() * 0.275 + 0.05,
 				distance: Math.random() * 4
 			};
 

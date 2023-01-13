@@ -22,8 +22,8 @@
 	 * @param {PointerEvent} event
 	 */
 	function moveCamera(event) {
-		let x = (event.clientX / window.innerWidth) * (Math.PI * (1 / 4));
-		$cameraY = Math.cos(x);
+		let x = (event.clientX / window.innerWidth) * Math.PI;
+		$cameraY = Math.cos(x) - Math.PI;
 	}
 
 	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
@@ -32,14 +32,13 @@
 	let innerWidth;
 
 	$: zoom = Math.min(50 * (innerWidth / 600), 50);
-	$: console.log(zoom);
 </script>
 
 <svelte:window bind:innerWidth />
 <svelte:body on:pointermove={moveCamera} />
 
 <Canvas shadows shadowMapType={PCFSoftShadowMap}>
-	<T.Fog attach="fog" near={10} far={48} color={fogColor} density={100} />
+	<T.Fog attach="fog" near={10} far={39} color={fogColor} density={100} />
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight />
 	<T.PointLight castShadow position.y={10} intensity={1} />
