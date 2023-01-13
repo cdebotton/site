@@ -1,8 +1,4 @@
 <script>
-	import Glass from '$lib/icons/glass.svelte';
-	import Linkedin from '$lib/icons/linkedin.svelte';
-	import Mastodon from '$lib/icons/mastodon.svelte';
-
 	let sceneLoader = import('$lib/components/scene.svelte');
 </script>
 
@@ -30,30 +26,12 @@
 			<em>product</em>, and <em>user experience</em> engineering teams.
 		</p>
 	</div>
-	<div class="connect">
-		<ul>
-			<li>
-				<a target="_blank" rel="noreferrer" href="https://linkedin.com/in/christiandebotton">
-					<Linkedin />
-				</a>
-			</li>
-			<li>
-				<a target="_blank" rel="noreferrer" href="https://glass.photo/cdb">
-					<Glass />
-				</a>
-			</li>
-			<li>
-				<a target="_blank" rel="noreferrer" href="https://mas.to/@cdebotton">
-					<Mastodon />
-				</a>
-			</li>
-		</ul>
-	</div>
 </div>
 
 <style>
 	.canvas {
-		position: absolute;
+		position: fixed;
+		z-index: 0;
 		inset: 0;
 	}
 
@@ -65,8 +43,7 @@
 		gap: var(--space-12);
 	}
 
-	.intro,
-	.connect {
+	.intro {
 		width: 100%;
 		max-width: 32ch;
 	}
@@ -90,26 +67,6 @@
 		line-height: var(--leading-body);
 	}
 
-	.connect ul {
-		display: flex;
-		font-size: var(--text-lg);
-		gap: var(--space-4);
-	}
-
-	.connect a {
-		display: inline-block;
-		border-radius: 7px;
-		background-color: var(--mauve4);
-		padding-block: var(--space-2);
-		padding-inline: var(--space-4);
-	}
-
-	@media not all and (hover: none) {
-		.connect a:hover {
-			background-color: var(--mauve5);
-		}
-	}
-
 	@media screen and (min-width: 480px) {
 		.content {
 			gap: var(--space-16);
@@ -126,8 +83,7 @@
 			font-weight: 200;
 		}
 
-		.intro,
-		.connect {
+		.intro {
 			max-width: 48ch;
 		}
 	}
