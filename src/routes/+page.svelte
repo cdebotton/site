@@ -22,7 +22,7 @@
 	<div class="intro">
 		<h2>Oh,{'\n'}Hello!</h2>
 		<p>
-			My name's <em>Christian</em> and I'm a software engineer based on San Francisco. Over my
+			My name's <em>Christian</em> and I'm a software engineer based in San Francisco. Over my
 			decade&#8209;and&#8209;a&#8209;half long career, I've worked on
 			<em>platform</em>,
 			<em>product</em>, and <em>user experience</em> engineering teams.
