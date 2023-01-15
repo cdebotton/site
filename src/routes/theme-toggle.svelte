@@ -21,22 +21,16 @@
 		background: none;
 		color: inherit;
 		cursor: pointer;
+		font-family: inherit;
 		font-size: var(--text-md);
 		font-weight: 900;
 		letter-spacing: var(--tracking-tighter);
 		text-transform: uppercase;
-		font-family: inherit;
 	}
 
 	@media not all and (hover: none) {
 		button:hover {
 			color: var(--plum11);
-		}
-	}
-
-	@media screen and (min-width: 480px) {
-		button {
-			font-size: var(--text-lg);
 		}
 	}
 </style>

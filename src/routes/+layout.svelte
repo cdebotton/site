@@ -1,11 +1,15 @@
 <script lang="ts">
-	import Logo from './logo.svelte';
-	import ThemeToggle from './theme-toggle.svelte';
+	import '$lib/css/base.css';
 
 	import type { LayoutServerData } from './$types';
 
-	import '$lib/css/base.css';
+	import Logo from './logo.svelte';
+
 	import { browser } from '$app/environment';
+
+	import ThemeToggle from './theme-toggle.svelte';
+
+	import Social from '$lib/components/social.svelte';
 	import Glass from '$lib/icons/glass.svelte';
 	import Linkedin from '$lib/icons/linkedin.svelte';
 	import Mastodon from '$lib/icons/mastodon.svelte';
@@ -40,19 +44,19 @@
 	<footer class="connect">
 		<ul>
 			<li>
-				<a target="_blank" rel="noreferrer" href="https://linkedin.com/in/christiandebotton">
+				<Social title="Linkedin" href="https://linkedin.com/in/christiandebotton">
 					<Linkedin />
-				</a>
+				</Social>
 			</li>
 			<li>
-				<a target="_blank" rel="noreferrer" href="https://glass.photo/cdb">
+				<Social title="Glass" href="https://glass.photo/cdb">
 					<Glass />
-				</a>
+				</Social>
 			</li>
 			<li>
-				<a target="_blank" rel="noreferrer" href="https://mas.to/@cdebotton">
+				<Social title="Mastodon" href="https://mas.to/@cdebotton">
 					<Mastodon />
-				</a>
+				</Social>
 			</li>
 		</ul>
 		<ThemeToggle />
@@ -104,22 +108,7 @@
 
 	.connect ul {
 		display: flex;
-		font-size: var(--text-lg);
 		gap: var(--space-4);
-	}
-
-	.connect a {
-		display: inline-block;
-		border-radius: 7px;
-		background-color: var(--mauve4);
-		padding-block: var(--space-2);
-		padding-inline: var(--space-4);
-	}
-
-	@media not all and (hover: none) {
-		.connect a:hover {
-			background-color: var(--mauve5);
-		}
 	}
 
 	@media screen and (min-width: 480px) {

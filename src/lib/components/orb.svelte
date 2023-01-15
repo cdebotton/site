@@ -6,9 +6,9 @@
 	import { spring, tweened } from 'svelte/motion';
 	import { OctahedronGeometry, SphereGeometry, MeshToonMaterial } from 'three';
 
-	import Moon from './moon.svelte';
-
 	import { theme } from '$lib/theme';
+
+	import Moon from './moon.svelte';
 
 	$: color = $theme.darkMode ? plumDark.plum2 : plum.plum9;
 	$: edgeColor = $theme.darkMode ? plumDark.plum10 : plum.plum11;
