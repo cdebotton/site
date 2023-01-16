@@ -20,10 +20,12 @@ specifiers:
   eslint-plugin-import: ^2.27.4
   eslint-plugin-svelte3: ^4.0.0
   glyphhanger: ^5.0.0
+  kebab-case: ^1.0.2
   motion: ^10.15.5
   postcss: ^8.4.21
   postcss-flexbugs-fixes: ^5.0.2
   postcss-html: ^1.5.0
+  postcss-jit-props: ^1.0.9
   postcss-preset-env: ^7.8.3
   prettier: ^2.8.3
   prettier-plugin-svelte: ^2.8.1
@@ -66,9 +68,11 @@ devDependencies:
   eslint-plugin-import: 2.27.4_2l6piu6guil2f63lj3qmhzbnn4
   eslint-plugin-svelte3: 4.0.0_tmo5zkisvhu6htudosk5k7m6pu
   glyphhanger: 5.0.0
+  kebab-case: 1.0.2
   postcss: 8.4.21
   postcss-flexbugs-fixes: 5.0.2_postcss@8.4.21
   postcss-html: 1.5.0
+  postcss-jit-props: 1.0.9_postcss@8.4.21
   postcss-preset-env: 7.8.3_postcss@8.4.21
   prettier: 2.8.3
   prettier-plugin-svelte: 2.9.0_kdmmghgdi3ngrsq6otxkjilbry
@@ -2878,6 +2882,10 @@ packages:
       verror: 1.10.0
     dev: true
 
+  /kebab-case/1.0.2:
+    resolution: {integrity: sha512-7n6wXq4gNgBELfDCpzKc+mRrZFs7D+wgfF5WRFLNAr4DA/qtr9Js8uOAVAfHhuLMfAcQ0pRKqbpjx+TcJVdE1Q==}
+    dev: true
+
   /kind-of/6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -3604,6 +3612,16 @@ packages:
       postcss: ^8.0.0
     dependencies:
       postcss: 8.4.21
+    dev: true
+
+  /postcss-jit-props/1.0.9_postcss@8.4.21:
+    resolution: {integrity: sha512-sMAo7eVF480LnEGG7G0uS+4L0wRZoXiLthxJePUqo4gHrzu17hU5obAdiscjp/aZag9TqokU6dpI1zHyDGxslA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.2.8
+    dependencies:
+      postcss: 8.4.21
+      tiny-glob: 0.2.9
     dev: true
 
   /postcss-lab-function/4.2.1_postcss@8.4.21:

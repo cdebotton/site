@@ -1,5 +1,6 @@
 module.exports = {
 	plugins: [
+		require('postcss-jit-props')({ files: ['./generated/colors.css'] }),
 		require('postcss-flexbugs-fixes'),
 		require('postcss-preset-env')({
 			autoprefixer: {
