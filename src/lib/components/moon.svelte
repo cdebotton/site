@@ -5,9 +5,6 @@
 	import { Vector3 } from 'three';
 
 	/** @type {number} */
-	export let index;
-
-	/** @type {number} */
 	export let scale;
 
 	/** @type {number} */

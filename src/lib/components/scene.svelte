@@ -1,6 +1,5 @@
 <script>
-	import { indigoDark } from '@radix-ui/colors';
-	import { indigo } from '@radix-ui/colors';
+	import { indigoDark, indigo } from '@radix-ui/colors';
 	import { Canvas, T } from '@threlte/core';
 	import { spring } from 'svelte/motion';
 	import { PCFSoftShadowMap } from 'three';
@@ -47,11 +46,7 @@
 <svelte:window bind:innerWidth />
 <svelte:body on:pointermove={moveCamera} />
 
-<Canvas
-	rendererParameters={{ preserveDrawingBuffer: true }}
-	shadows
-	shadowMapType={PCFSoftShadowMap}
->
+<Canvas shadows shadowMapType={PCFSoftShadowMap}>
 	<T.Fog attach="fog" near={20} far={45} color={fogColor} density={100} />
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight />

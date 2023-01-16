@@ -2,8 +2,8 @@
 	import { plum, plumDark } from '@radix-ui/colors';
 	import { T, useFrame, InstancedMesh } from '@threlte/core';
 	import { Edges } from '@threlte/extras';
-	import { cubicInOut } from 'svelte/easing';
-	import { spring, tweened } from 'svelte/motion';
+	import { spring } from 'svelte/motion';
+	import { quadInOut } from 'svelte/easing';
 	import { OctahedronGeometry, SphereGeometry, MeshToonMaterial } from 'three';
 
 	import { theme } from '$lib/theme';
@@ -13,31 +13,27 @@
 	$: color = $theme.darkMode ? plumDark.plum2 : plum.plum9;
 	$: edgeColor = $theme.darkMode ? plumDark.plum10 : plum.plum11;
 
-	const MIN_Y = 4;
-	const MAX_Y = 6;
+	/** @type {number} */
+	let y;
 
 	let rotationY = 0;
 	let rotationZ = 0;
 	let scale = spring(0, { damping: 0.05, stiffness: 0.005 });
-	let y = tweened(MIN_Y, {
-		duration: 5000,
-		easing: cubicInOut
-	});
 
 	useFrame(({ clock }) => {
-		rotationY = Math.sin(clock.getElapsedTime());
-		rotationZ = Math.cos(clock.getElapsedTime());
+		let t = clock.getElapsedTime();
+
+		rotationY = Math.sin(t);
+		rotationZ = Math.cos(t);
+
+		let x = quadInOut((t / 8) % 1) * Math.PI;
+
+		y = Math.sin(x) * 4 + 5;
 	});
 
 	setTimeout(() => {
 		$scale = 3;
 	}, 750);
-
-	function drift() {
-		y.update((value) => (value === MIN_Y ? MAX_Y : MIN_Y)).then(() => drift());
-	}
-
-	drift();
 
 	let geometry = new SphereGeometry();
 	let material = new MeshToonMaterial();
@@ -97,13 +93,12 @@
 	})();
 </script>
 
-<T.Group position.y={$y}>
+<T.Group position.y={y}>
 	<InstancedMesh castShadow {geometry} {material}>
-		{#each moons as moon (moon.index)}
+		{#each moons as { index, ...moon } (index)}
 			<Moon {...moon} />
 		{/each}
 	</InstancedMesh>
-
 	<T.Mesh
 		castShadow
 		geometry={new OctahedronGeometry(1, 2)}
