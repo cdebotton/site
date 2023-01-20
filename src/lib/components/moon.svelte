@@ -1,8 +1,8 @@
 <script>
 	import { Instance, useFrame } from '@threlte/core';
+	import { Vector3 } from 'three';
 
 	import { theme } from '$lib/theme';
-	import { Vector3 } from 'three';
 
 	/** @type {number} */
 	export let scale;

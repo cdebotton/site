@@ -1,17 +1,17 @@
 <script>
-	import { plum, plumDark } from '@radix-ui/colors';
+	import { red, plumDark } from '@radix-ui/colors';
 	import { T, useFrame, InstancedMesh } from '@threlte/core';
 	import { Edges } from '@threlte/extras';
-	import { spring } from 'svelte/motion';
 	import { quadInOut } from 'svelte/easing';
+	import { spring } from 'svelte/motion';
 	import { OctahedronGeometry, SphereGeometry, MeshToonMaterial } from 'three';
-
-	import { theme } from '$lib/theme';
 
 	import Moon from './moon.svelte';
 
-	$: color = $theme.darkMode ? plumDark.plum2 : plum.plum9;
-	$: edgeColor = $theme.darkMode ? plumDark.plum10 : plum.plum11;
+	import { theme } from '$lib/theme';
+
+	$: color = $theme.darkMode ? plumDark.plum2 : red.red9;
+	$: edgeColor = $theme.darkMode ? plumDark.plum10 : red.red11;
 
 	/** @type {number} */
 	let y;

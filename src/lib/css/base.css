@@ -1,13 +1,21 @@
-@import '@radix-ui/colors/indigo.css';
-@import '@radix-ui/colors/indigoDark.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/mauveDark.css';
-@import '@radix-ui/colors/plum.css';
-@import '@radix-ui/colors/plumDark.css';
-@import '@radix-ui/colors/blue.css';
-@import '@radix-ui/colors/blueDark.css';
-@import '@radix-ui/colors/purple.css';
-@import '@radix-ui/colors/purpleDark.css';
+:root,
+[data-dark='true'] {
+	--color-background: var(--indigo-dark-1);
+	--color-text: var(--indigo-dark-12);
+	--color-emphasis: var(--indigo-dark-11);
+	--color-accent: var(--plum-dark-11);
+	--brand-blue: var(--blue-9);
+	--brand-purple: var(--purple-9);
+}
+
+[data-dark='false'] {
+	--color-background: var(--indigo-1);
+	--color-text: var(--indigo-12);
+	--color-emphasis: var(--red-9);
+	--color-accent: var(--red-11);
+	--brand-blue: var(--crimson-11);
+	--brand-purple: var(--orange-9);
+}
 
 :root {
 	--text-accent: var(--red-dark-2);
@@ -88,8 +96,8 @@ html {
 
 body {
 	font-family: 'Inter var', 'Inter var Fallback';
-	background-color: var(--indigo1);
-	color: var(--indigo12);
+	background-color: var(--color-background);
+	color: var(--color-text);
 }
 
 p {
@@ -140,7 +148,7 @@ video {
 
 em {
 	font-style: normal;
-	color: var(--indigo11);
+	color: var(--color-emphasis);
 	font-weight: 600;
 }
 

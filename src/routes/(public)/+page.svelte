@@ -1,7 +1,5 @@
 <script>
 	let sceneLoader = import('$lib/components/scene.svelte');
-	/** @type {string} */
-	let favicon;
 </script>
 
 <svelte:head>
@@ -51,7 +49,7 @@
 	}
 
 	h2 {
-		color: var(--plum11);
+		color: var(--color-accent);
 		font-size: var(--text-2xl);
 		font-weight: 800;
 		letter-spacing: var(--tracking-normal);

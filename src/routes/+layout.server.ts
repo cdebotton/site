@@ -7,6 +7,8 @@ const schema = z.object({
 });
 
 export const load: LayoutServerLoad = async (event) => {
+	const session = await event.locals.getSession();
+
 	try {
 		const cookie = event.cookies.get('theme');
 
@@ -16,8 +18,8 @@ export const load: LayoutServerLoad = async (event) => {
 
 		const json = JSON.parse(cookie);
 		const theme = schema.parse(json);
-		return { theme };
+		return { theme, session };
 	} catch (err) {
-		return { theme: { darkMode: true } };
+		return { theme: { darkMode: true }, session };
 	}
 };

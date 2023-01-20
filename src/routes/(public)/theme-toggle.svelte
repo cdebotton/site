@@ -22,7 +22,7 @@
 		color: inherit;
 		cursor: pointer;
 		font-family: inherit;
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
 		font-weight: 900;
 		letter-spacing: var(--tracking-tighter);
 		text-transform: uppercase;
@@ -30,7 +30,7 @@
 
 	@media not all and (hover: none) {
 		button:hover {
-			color: var(--plum11);
+			color: var(--color-accent);
 		}
 	}
 </style>

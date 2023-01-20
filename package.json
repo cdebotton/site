@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"postinstall": "mkdir -p generated && node scripts/colors.cjs > generated/colors.css",
-		"dev": "vite dev",
+		"dev": "concurrently 'vite dev' 'pscale connect portfolio dev --port 3309'",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
@@ -17,8 +17,8 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@radix-ui/colors": "^0.1.8",
-		"@sveltejs/adapter-auto": "^1.0.1",
-		"@sveltejs/kit": "^1.1.1",
+		"@sveltejs/adapter-auto": "^1.0.2",
+		"@sveltejs/kit": "^1.2.0",
 		"@threlte/preprocess": "^0.0.2",
 		"@types/three": "^0.148.0",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",
@@ -27,7 +27,7 @@
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.32.0",
 		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-import": "^2.27.4",
+		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"glyphhanger": "^5.0.0",
 		"kebab-case": "^1.0.2",
@@ -48,16 +48,25 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
-		"vitest": "^0.27.1"
+		"vitest": "^0.27.2"
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.2.5",
+		"@auth/sveltekit": "^0.1.12",
 		"@dimforge/rapier3d-compat": "^0.11.1",
+		"@next-auth/prisma-adapter": "^1.0.5",
+		"@prisma/client": "^4.9.0",
 		"@threlte/core": "^5.0.8",
 		"@threlte/extras": "^4.9.3",
 		"@threlte/rapier": "^0.5.0",
+		"@trpc/client": "^10.9.0",
+		"@trpc/server": "^10.9.0",
+		"concurrently": "^7.6.0",
 		"motion": "^10.15.5",
+		"prisma": "^4.9.0",
 		"three": "^0.148.0",
+		"trpc-sveltekit": "^3.2.4",
 		"zod": "3.20.2"
 	}
 }

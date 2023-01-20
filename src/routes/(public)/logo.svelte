@@ -25,7 +25,7 @@
 	}
 
 	h1 [lang='ja'] {
-		color: var(--indigo12);
+		color: var(--color-text);
 		font-size: var(--text-xs);
 		letter-spacing: var(--tracking-thiccc);
 		padding-block-end: var(--space-1);
@@ -40,10 +40,10 @@
 		background-clip: text;
 		background-image: linear-gradient(
 			to bottom right,
-			var(--blue9) 0%,
-			var(--purple9) 45%,
-			var(--purple9) 55%,
-			var(--blue9) 100%
+			var(--brand-blue) 0%,
+			var(--brand-purple) 45%,
+			var(--brand-purple) 55%,
+			var(--brand-blue) 100%
 		);
 		background-size: 400vw 400vh;
 		color: transparent;
@@ -55,7 +55,7 @@
 	}
 
 	h1 small {
-		color: var(--indigo12);
+		color: var(--color-text);
 		font-size: 0.707em;
 		padding-inline: var(--space-1);
 	}

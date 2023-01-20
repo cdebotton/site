@@ -7,8 +7,8 @@
 	import Floor from './floor.svelte';
 	import Orb from './orb.svelte';
 
-	import { theme } from '$lib/theme';
 	import { browser } from '$app/environment';
+	import { theme } from '$lib/theme';
 
 	/**
 	 * Spin the camera with the mouse movement.
