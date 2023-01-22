@@ -20,10 +20,13 @@
 	<div class="intro">
 		<h2>Oh,{'\n'}Hello!</h2>
 		<p>
-			My name's <em>Christian</em> and I'm a software engineer based in San Francisco. Over my
-			decade&#8209;and&#8209;a&#8209;half long career, I've worked on
+			My name's <em>Christian</em> and I'm a software engineer based in San Francisco.
+		</p>
+		<p>
+			Over my decade&#8209;and&#8209;a&#8209;half long career, I've worked on
 			<em>platform</em>,
-			<em>product</em>, and <em>user experience</em> engineering teams.
+			<em>product</em>, and <em>user experience</em> engineering teams as both an engineering manager
+			and an individual contributor.
 		</p>
 	</div>
 </div>
@@ -63,9 +66,14 @@
 	}
 
 	p {
+		margin-bottom: var(--space-4);
 		font-size: var(--text-sm);
 		font-weight: 300;
 		line-height: var(--leading-body);
+	}
+
+	p:last-of-type {
+		margin-bottom: var(--space-0);
 	}
 
 	@media screen and (min-width: 480px) {

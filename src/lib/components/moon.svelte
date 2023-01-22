@@ -1,4 +1,5 @@
 <script>
+	import { plumDark, red } from '@radix-ui/colors';
 	import { Instance, useFrame } from '@threlte/core';
 	import { Vector3 } from 'three';
 
@@ -34,7 +35,7 @@
 		trueScale = trueScale.lerp(targetScale, delta);
 	});
 
-	$: color = $theme.darkMode ? 'hsl(229, 24.0%, 2%)' : 'hsl(226, 75.4%, 98.5%)';
+	$: color = $theme.darkMode ? plumDark.plum3 : red.red8;
 </script>
 
 <Instance {color} position={{ z, x, y }} scale={trueScale} />
