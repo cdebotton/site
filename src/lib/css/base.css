@@ -11,7 +11,7 @@
 [data-dark='false'] {
 	--color-background: var(--indigo-1);
 	--color-text: var(--indigo-12);
-	--color-emphasis: var(--red-9);
+	--color-emphasis: var(--orange-10);
 	--color-accent: var(--red-11);
 	--brand-blue: var(--crimson-11);
 	--brand-purple: var(--orange-9);
