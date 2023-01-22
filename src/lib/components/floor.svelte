@@ -28,7 +28,7 @@
 <T.Group position.y={y}>
 	<T.Mesh position.y={[-0.02]} receiveShadow rotation.x={-Math.PI / 2}>
 		<T.PlaneGeometry args={[100, 100]} />
-		<T.ShadowMaterial opacity={0.2} color={shadowColor} />
+		<T.ShadowMaterial opacity={0.6} color={shadowColor} />
 	</T.Mesh>
 	<T.GridHelper args={[100, 100, gridColor, gridColor]} position={[0, -0.01, 0]} />
 	<InstancedMesh

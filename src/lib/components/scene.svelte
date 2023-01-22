@@ -56,8 +56,8 @@
 <Canvas bind:ctx rendererParameters={{ alpha: false }} shadows shadowMapType={PCFSoftShadowMap}>
 	<T.Fog attach="fog" near={20} far={45} color={fogColor} density={100} />
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
-	<T.DirectionalLight />
-	<T.PointLight castShadow position.y={10} intensity={1} />
+	<T.DirectionalLight intensity={0.4} />
+	<T.PointLight castShadow position.y={14} intensity={1} />
 	<T.Group rotation.y={$cameraY} position.y={-4}>
 		<Orb />
 		<Floor />
