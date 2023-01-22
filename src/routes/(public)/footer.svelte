@@ -2,6 +2,7 @@
 	import Social from './social.svelte';
 	import ThemeToggle from './theme-toggle.svelte';
 
+	import Github from '$lib/icons/github.svelte';
 	import Glass from '$lib/icons/glass.svelte';
 	import Linkedin from '$lib/icons/linkedin.svelte';
 	import Mastodon from '$lib/icons/mastodon.svelte';
@@ -9,6 +10,11 @@
 
 <footer>
 	<ul>
+		<li>
+			<Social title="Github" href="https://github.com/cdebotton">
+				<Github />
+			</Social>
+		</li>
 		<li>
 			<Social title="Linkedin" href="https://linkedin.com/in/christiandebotton">
 				<Linkedin />

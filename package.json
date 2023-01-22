@@ -18,7 +18,7 @@
 		"@playwright/test": "^1.28.1",
 		"@radix-ui/colors": "^0.1.8",
 		"@sveltejs/adapter-auto": "^1.0.2",
-		"@sveltejs/kit": "^1.2.0",
+		"@sveltejs/kit": "^1.2.2",
 		"@threlte/preprocess": "^0.0.2",
 		"@types/three": "^0.148.0",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",
@@ -48,7 +48,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
-		"vitest": "^0.27.2"
+		"vitest": "^0.27.3"
 	},
 	"type": "module",
 	"dependencies": {

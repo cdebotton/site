@@ -2,8 +2,9 @@
 	import { indigoDark, indigo } from '@radix-ui/colors';
 	import { Canvas, T } from '@threlte/core';
 	import { spring } from 'svelte/motion';
-	import { PCFSoftShadowMap } from 'three';
+	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
+	import Effects from './effects.svelte';
 	import Floor from './floor.svelte';
 	import Orb from './orb.svelte';
 
@@ -41,12 +42,19 @@
 	$: camera?.lookAt(0, 0, 0);
 	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
 	$: zoom = Math.min(50 * (innerWidth / 600), 50);
+
+	ColorManagement.legacyMode = false;
+
+	/** @type {import('@threlte/core').ThrelteContext} */
+	let ctx;
+
+	$: ctx?.renderer?.setClearColor($theme.darkMode ? indigoDark.indigo1 : indigo.indigo1);
 </script>
 
 <svelte:window bind:innerWidth />
 <svelte:body on:pointermove={moveCamera} />
 
-<Canvas shadows shadowMapType={PCFSoftShadowMap}>
+<Canvas bind:ctx rendererParameters={{ alpha: false }} shadows shadowMapType={PCFSoftShadowMap}>
 	<T.Fog attach="fog" near={20} far={45} color={fogColor} density={100} />
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight />
