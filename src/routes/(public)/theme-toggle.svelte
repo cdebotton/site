@@ -1,19 +1,29 @@
 <script lang="ts">
 	import { theme } from '$lib/theme';
+	import { page } from '$app/stores';
+	import { enhance, type SubmitFunction } from '$app/forms';
 
-	function toggle() {
-		$theme.darkMode = !$theme.darkMode;
-		document.cookie = `theme=${JSON.stringify($theme)}`;
-	}
+	let enhanceTheme: SubmitFunction = ({ action }) => {
+		let darkMode = action.searchParams.get('darkMode');
+		if (darkMode) {
+			$theme.darkMode = darkMode === 'true';
+		}
+	};
 </script>
 
-<button on:click={toggle}>
-	{#if $theme.darkMode}
-		Light
-	{:else}
-		Dark
-	{/if}
-</button>
+<form
+	use:enhance={enhanceTheme}
+	method="POST"
+	action={`/?/setTheme&darkMode=${!$theme.darkMode}&redirectTo=${$page.url.pathname}`}
+>
+	<button type="submit">
+		{#if $theme.darkMode}
+			Light
+		{:else}
+			Dark
+		{/if}
+	</button>
+</form>
 
 <style>
 	button {
