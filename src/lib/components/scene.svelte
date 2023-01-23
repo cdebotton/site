@@ -11,6 +11,7 @@
 	import { theme } from '$lib/theme';
 	import type { OrthographicCamera } from 'three';
 	import Effects from './effects.svelte';
+	import { supportsTouch } from '$lib/supportsTouch';
 
 	/**
 	 * Spin the camera with the mouse movement.
@@ -24,12 +25,7 @@
 		$cameraY = Math.cos(x) - Math.PI;
 	}
 
-	let isTouch: boolean;
-	$: if (browser && matchMedia('not all and (hover: none)').matches) {
-		isTouch = false;
-	} else {
-		isTouch = true;
-	}
+	let isTouch = supportsTouch();
 
 	let camera: OrthographicCamera | undefined;
 	let cameraY = spring(0);
