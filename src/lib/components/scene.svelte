@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import { indigoDark, indigo } from '@radix-ui/colors';
-	import { Canvas, T } from '@threlte/core';
+	import { Canvas, T, type ThrelteContext } from '@threlte/core';
 	import { spring } from 'svelte/motion';
 	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
@@ -9,12 +9,13 @@
 
 	import { browser } from '$app/environment';
 	import { theme } from '$lib/theme';
+	import type { OrthographicCamera } from 'three';
+	import Effects from './effects.svelte';
 
 	/**
 	 * Spin the camera with the mouse movement.
-	 * @param {PointerEvent} event
 	 */
-	function moveCamera(event) {
+	function moveCamera(event: PointerEvent) {
 		if (isTouch) {
 			return;
 		}
@@ -23,29 +24,24 @@
 		$cameraY = Math.cos(x) - Math.PI;
 	}
 
-	/** @type {boolean} */
-	let isTouch;
+	let isTouch: boolean;
 	$: if (browser && matchMedia('not all and (hover: none)').matches) {
 		isTouch = false;
 	} else {
 		isTouch = true;
 	}
 
-	/** @type {import('three').OrthographicCamera | undefined} */
-	let camera;
-	/** @type {import('svelte/motion').Spring<number>} */
+	let camera: OrthographicCamera | undefined;
 	let cameraY = spring(0);
-	/** @type {number} */
-	let innerWidth;
+	let innerWidth: number;
 
 	$: camera?.lookAt(0, 0, 0);
 	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
-	$: zoom = Math.min(50 * (innerWidth / 600), 50);
+	$: zoom = Math.min(65 * (innerWidth / 800), 65);
 
 	ColorManagement.legacyMode = false;
 
-	/** @type {import('@threlte/core').ThrelteContext} */
-	let ctx;
+	let ctx: ThrelteContext;
 
 	$: ctx?.renderer?.setClearColor($theme.darkMode ? indigoDark.indigo1 : indigo.indigo1);
 </script>
@@ -62,4 +58,5 @@
 		<Orb />
 		<Floor />
 	</T.Group>
+	<Effects />
 </Canvas>

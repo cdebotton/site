@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Social from './social.svelte';
 	import ThemeToggle from './theme-toggle.svelte';
 

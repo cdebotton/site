@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { red, plumDark } from '@radix-ui/colors';
 	import { T, useFrame, InstancedMesh } from '@threlte/core';
 	import { Edges } from '@threlte/extras';
@@ -13,12 +13,11 @@
 	$: color = $theme.darkMode ? plumDark.plum2 : red.red9;
 	$: edgeColor = $theme.darkMode ? plumDark.plum10 : red.red11;
 
-	/** @type {number} */
-	let y;
+	let y: number;
 
 	let rotationY = 0;
 	let rotationZ = 0;
-	let scale = spring(0, { damping: 0.05, stiffness: 0.005 });
+	let scale = spring(0, { damping: 0.035, stiffness: 0.005, precision: 0.001 });
 
 	useFrame(({ clock }) => {
 		let t = clock.getElapsedTime();
@@ -38,21 +37,15 @@
 	let geometry = new SphereGeometry();
 	let material = new MeshToonMaterial();
 
-	/**
-	 * @typedef Moon
-	 * @type {object}
-	 * @property {number} index
-	 * @property {number} scale
-	 * @property {number} distance
-	 * @property {number} speed
-	 * @property {number} seed
-	 */
+	type Moon = {
+		index: number;
+		scale: number;
+		distance: number;
+		speed: number;
+		seed: number;
+	};
 
-	/**
-	 *
-	 * @param {number} count
-	 */
-	function* moonGenerator(count) {
+	function* moonGenerator(count: number) {
 		for (let i = 0; i < count; i += 1) {
 			let moon = {
 				index: count - i,
@@ -66,12 +59,7 @@
 		}
 	}
 
-	/**
-	 *
-	 * @param {number} amount
-	 * @returns {Promise<void>}
-	 */
-	async function delay(amount) {
+	async function delay(amount: number): Promise<void> {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve();
@@ -79,8 +67,7 @@
 		});
 	}
 
-	/** @type {Moon[]} */
-	let moons = [];
+	let moons: Moon[] = [];
 	let time = 50;
 
 	(async () => {

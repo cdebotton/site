@@ -1,9 +1,6 @@
-<script>
-	/** @type {string} */
-	export let href;
-
-	/** @type {string} */
-	export let title;
+<script lang="ts">
+	export let href: string;
+	export let title: string;
 </script>
 
 <a target="_blank" {title} rel="noreferrer" {href}>

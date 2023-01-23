@@ -7,5 +7,7 @@
 	"explorer.fileNesting.patterns": {
 		"package.json": "pnpm-lock.yaml",
 		"+*.svelte": "+$(capture).server.ts, +$(capture).ts"
-	}
+	},
+	"workbench.editor.labelFormat": "short",
+	"workbench.tree.indent": 16
 }

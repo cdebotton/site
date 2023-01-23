@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let sceneLoader = import('$lib/components/scene.svelte');
 </script>
 

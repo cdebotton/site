@@ -1,23 +1,18 @@
-<script>
-	import { useFrame, useThrelte } from '@threlte/core';
+<script lang="ts">
+	import { useThrelte } from '@threlte/core';
 	import { onMount } from 'svelte';
 
 	let { renderer } = useThrelte();
 
 	$: canvas = renderer?.domElement;
 
-	/** @type {string|undefined}*/
-	let href = undefined;
-	/** @type {HTMLCanvasElement} */
-	let favicon;
-
+	let href: string | undefined = undefined;
+	let favicon: HTMLCanvasElement;
 	let lowPerf = false;
 
 	onMount(() => {
 		let ctx = favicon.getContext('2d');
-
-		/** @type {NodeJS.Timeout | null} */
-		let timer = null;
+		let timer: NodeJS.Timeout | null = null;
 
 		function createFaviconFromCanvas() {
 			setTimeout(() => {

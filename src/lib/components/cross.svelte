@@ -1,13 +1,11 @@
-<script>
+<script lang="ts">
 	import { T, Instance } from '@threlte/core';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
 	import { degToRad } from 'three/src/math/MathUtils';
 
-	/** @type {number} */
-	export let x;
-	/** @type {number} */
-	export let y;
+	export let x: number;
+	export let y: number;
 
 	$: n = x * y;
 

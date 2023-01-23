@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { indigo, slate } from '@radix-ui/colors';
 	import { T, InstancedMesh } from '@threlte/core';
-	import { MeshBasicMaterial, PlaneGeometry } from 'three';
+	import { MeshBasicMaterial, type OrthographicCamera, PlaneGeometry } from 'three';
 
 	import Cross from './cross.svelte';
 
@@ -9,8 +9,7 @@
 
 	export let y = 0;
 
-	/** @type {import('three').OrthographicCamera | undefined} */
-	let camera;
+	let camera: OrthographicCamera | undefined;
 
 	let crosses = Array.from({ length: 23 }, (_, y) => {
 		return Array.from({ length: 23 }, (_, x) => {

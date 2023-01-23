@@ -1,21 +1,14 @@
-<script>
+<script lang="ts">
 	import { plumDark, red } from '@radix-ui/colors';
 	import { Instance, useFrame } from '@threlte/core';
 	import { Vector3 } from 'three';
 
 	import { theme } from '$lib/theme';
 
-	/** @type {number} */
-	export let scale;
-
-	/** @type {number} */
-	export let distance;
-
-	/** @type {number} */
-	export let speed;
-
-	/** @type {number} */
-	export let seed;
+	export let scale: number;
+	export let distance: number;
+	export let speed: number;
+	export let seed: number;
 
 	const RADIUS = 3;
 
