@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { plumDark, red } from '@radix-ui/colors';
 	import { Instance, useFrame } from '@threlte/core';
-	import { Vector3 } from 'three';
+	import { onMount } from 'svelte';
+	import { spring } from 'svelte/motion';
 
 	import { theme } from '$lib/theme';
 
@@ -16,19 +17,24 @@
 	let x = 0;
 	let y = 0;
 
-	let trueScale = new Vector3(0, 0, 0);
-	let targetScale = new Vector3(scale, scale, scale);
-
-	useFrame(({ clock }, delta) => {
+	useFrame(({ clock }) => {
 		let t = clock.getElapsedTime() * speed + seed;
 		z = -(RADIUS + distance) * Math.sin(t);
 		x = -(RADIUS + distance) * Math.cos(t);
 		y = 5 * Math.cos(t);
+	});
 
-		trueScale = trueScale.lerp(targetScale, delta);
+	let realScale = spring(0, {
+		stiffness: 0.02,
+		damping: 0.05,
+		precision: 0.001
+	});
+
+	onMount(() => {
+		$realScale = scale;
 	});
 
 	$: color = $theme.darkMode ? plumDark.plum3 : red.red8;
 </script>
 
-<Instance {color} position={{ z, x, y }} scale={trueScale} />
+<Instance {color} position={{ z, x, y }} scale={$realScale} />

@@ -37,7 +37,7 @@
 	let geometry = new SphereGeometry();
 	let material = new MeshToonMaterial();
 
-	type Moon = {
+	type TMoon = {
 		index: number;
 		scale: number;
 		distance: number;
@@ -67,7 +67,7 @@
 		});
 	}
 
-	let moons: Moon[] = [];
+	let moons: TMoon[] = [];
 	let time = 50;
 
 	(async () => {

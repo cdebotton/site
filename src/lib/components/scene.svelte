@@ -4,14 +4,14 @@
 	import { spring } from 'svelte/motion';
 	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
+	import Effects from './effects.svelte';
 	import Floor from './floor.svelte';
 	import Orb from './orb.svelte';
 
-	import { browser } from '$app/environment';
-	import { theme } from '$lib/theme';
 	import type { OrthographicCamera } from 'three';
-	import Effects from './effects.svelte';
+
 	import { supportsTouch } from '$lib/supportsTouch';
+	import { theme } from '$lib/theme';
 
 	/**
 	 * Spin the camera with the mouse movement.
