@@ -146,12 +146,6 @@ video {
 		'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
-em {
-	font-style: normal;
-	color: var(--color-emphasis);
-	font-weight: 600;
-}
-
 a {
 	color: var(--mauve9);
 }

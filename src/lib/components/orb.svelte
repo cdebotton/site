@@ -37,47 +37,25 @@
 	let geometry = new SphereGeometry();
 	let material = new MeshToonMaterial();
 
-	type TMoon = {
-		index: number;
-		scale: number;
-		distance: number;
-		speed: number;
-		seed: number;
-	};
+	let delta = 50;
+	let time = 0;
+	const COUNT = 500;
+	let moons = Array.from({ length: COUNT }, (_, i) => {
+		time += delta;
 
-	function* moonGenerator(count: number) {
-		for (let i = 0; i < count; i += 1) {
-			let moon = {
-				index: count - i,
-				scale: Math.random() * 0.378 + 0.015,
-				distance: Math.random() * 5 + 1,
-				speed: (i / count) * 1.2,
-				seed: Math.random() * 5235928
-			};
+		let moon = {
+			index: COUNT - i,
+			scale: Math.random() * 0.378 + 0.015,
+			distance: Math.random() * 5 + 1,
+			speed: (i / COUNT) * 1.2,
+			seed: Math.random() * 5235928,
+			delay: time
+		};
 
-			yield moon;
-		}
-	}
+		delta *= 0.985;
 
-	async function delay(amount: number): Promise<void> {
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve();
-			}, amount);
-		});
-	}
-
-	let moons: TMoon[] = [];
-	let time = 50;
-
-	(async () => {
-		for (let moon of moonGenerator(500)) {
-			moons.push(moon);
-			await delay(time);
-			moons = moons;
-			time *= 0.99;
-		}
-	})();
+		return moon;
+	});
 </script>
 
 <T.Group position.y={y}>

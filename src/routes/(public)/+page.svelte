@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Loader from '$lib/components/loader.svelte';
+
 	let sceneLoader = import('$lib/components/scene.svelte');
 </script>
 
@@ -11,7 +13,9 @@
 </svelte:head>
 
 <div class="canvas">
-	{#await sceneLoader then { default: Scene }}
+	{#await sceneLoader}
+		<Loader />
+	{:then { default: Scene }}
 		<Scene />
 	{/await}
 </div>
@@ -20,13 +24,13 @@
 	<div class="intro">
 		<h2>Oh,{'\n'}Hello!</h2>
 		<p>
-			My name's <em>Christian</em> and I'm a software engineer based in San Francisco.
+			My name's <strong>Christian</strong> and I'm a software engineer based in San Francisco.
 		</p>
 		<p>
 			Over my decade&#8209;and&#8209;a&#8209;half long career, I've worked on
-			<em>platform</em>,
-			<em>product</em>, and <em>user experience</em> engineering teams as both an engineering manager
-			and an individual contributor.
+			<strong>platform</strong>,
+			<strong>product</strong>, and <strong>user experience</strong> engineering teams as both an engineering
+			manager and an individual contributor.
 		</p>
 	</div>
 </div>
@@ -74,6 +78,12 @@
 
 	p:last-of-type {
 		margin-bottom: var(--space-0);
+	}
+
+	strong {
+		font-style: normal;
+		color: var(--color-emphasis);
+		font-weight: 600;
 	}
 
 	@media screen and (min-width: 480px) {

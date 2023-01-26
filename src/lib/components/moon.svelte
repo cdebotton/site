@@ -6,10 +6,13 @@
 
 	import { theme } from '$lib/theme';
 
-	export let scale: number;
+	let targetScale: number;
+
+	export { targetScale as scale };
 	export let distance: number;
 	export let speed: number;
 	export let seed: number;
+	export let delay: number;
 
 	const RADIUS = 3;
 
@@ -24,17 +27,19 @@
 		y = 5 * Math.cos(t);
 	});
 
-	let realScale = spring(0, {
+	let scale = spring(0.0001, {
 		stiffness: 0.02,
 		damping: 0.05,
 		precision: 0.001
 	});
 
 	onMount(() => {
-		$realScale = scale;
+		setTimeout(() => {
+			$scale = targetScale;
+		}, delay);
 	});
 
 	$: color = $theme.darkMode ? plumDark.plum3 : red.red8;
 </script>
 
-<Instance {color} position={{ z, x, y }} scale={$realScale} />
+<Instance {color} position={{ x, y, z }} scale={$scale} />

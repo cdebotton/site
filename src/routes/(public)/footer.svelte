@@ -11,22 +11,25 @@
 <footer>
 	<ul>
 		<li>
-			<Social title="Github" href="https://github.com/cdebotton">
+			<Social title="Judge my code on Github" href="https://github.com/cdebotton">
 				<Github />
 			</Social>
 		</li>
 		<li>
-			<Social title="Linkedin" href="https://linkedin.com/in/christiandebotton">
+			<Social
+				title="View my work history at Linkedin"
+				href="https://linkedin.com/in/christiandebotton"
+			>
 				<Linkedin />
 			</Social>
 		</li>
 		<li>
-			<Social title="Glass" href="https://glass.photo/cdb">
+			<Social title="Check out my photography on Glass" href="https://glass.photo/cdb">
 				<Glass />
 			</Social>
 		</li>
 		<li>
-			<Social title="Mastodon" href="https://mas.to/@cdebotton">
+			<Social title="Just me, shouting into the void on Mastodon" href="https://mas.to/@cdebotton">
 				<Mastodon />
 			</Social>
 		</li>

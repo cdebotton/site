@@ -4,7 +4,6 @@
 	import { spring } from 'svelte/motion';
 	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
-	import Effects from './effects.svelte';
 	import Floor from './floor.svelte';
 	import Orb from './orb.svelte';
 
@@ -54,5 +53,4 @@
 		<Orb />
 		<Floor />
 	</T.Group>
-	<Effects />
 </Canvas>
