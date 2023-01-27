@@ -155,6 +155,6 @@ a:hover {
 }
 
 ::selection {
-	color: var(--purple4);
-	background-color: var(--mauve12);
+	color: var(--purple-4);
+	background-color: var(--mauve-12);
 }

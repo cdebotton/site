@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { signOut } from '@auth/sveltekit/client';
-
-	import Button from '$lib/components/button.svelte';
+	import Editor from '$lib/components/Editor.svelte';
 </script>
 
-<Button on:click={() => signOut()}>Logout</Button>
+<Editor />
