@@ -1,3 +1,4 @@
 packages:
   - "cms"
-  - "web"
+  - "web-svelte"
+  - "web-react"
