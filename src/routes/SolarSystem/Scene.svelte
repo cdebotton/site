@@ -5,12 +5,14 @@
 	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
 	import Floor from './Floor.svelte';
-	import Orb from './Orb.svelte';
+	import Planet from './Planet.svelte';
 
 	import type { OrthographicCamera } from 'three';
 
 	import { supportsTouch } from '$lib/supportsTouch';
 	import { theme } from '$lib/theme';
+	import Moons from './Moons.svelte';
+	import Bounce from './Bounce.svelte';
 
 	/**
 	 * Spin the camera with the mouse movement.
@@ -51,8 +53,11 @@
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight intensity={0.4} />
 	<T.PointLight castShadow position.y={14} intensity={1} />
-	<T.Group rotation.y={$cameraY} position.y={-4}>
-		<Orb />
+	<T.Group rotation.y={$cameraY}>
+		<Bounce>
+			<Planet />
+			<Moons count={750} />
+		</Bounce>
 		<Floor />
 	</T.Group>
 </Canvas>

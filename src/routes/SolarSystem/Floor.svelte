@@ -7,8 +7,6 @@
 
 	import { theme } from '$lib/theme';
 
-	export let y = 0;
-
 	let camera: OrthographicCamera | undefined;
 
 	let crosses = Array.from({ length: 23 }, (_, y) => {
@@ -24,7 +22,7 @@
 	$: camera?.lookAt(0, 0, 0);
 </script>
 
-<T.Group position.y={y}>
+<T.Group position.y={-4}>
 	<T.Mesh position.y={[-0.02]} receiveShadow rotation.x={-Math.PI / 2}>
 		<T.PlaneGeometry args={[100, 100]} />
 		<T.ShadowMaterial opacity={0.6} color={shadowColor} />

@@ -2,8 +2,7 @@
 	<span lang="ja">クリスチャン・デボットン</span>
 	<span lang="en">Christian</span>
 	<span lang="en">
-		<small>de</small>
-		&nbsp;Botton
+		<small>de</small>Botton
 	</span>
 </h1>
 
@@ -63,6 +62,7 @@
 	small {
 		color: var(--color-text);
 		font-size: 0.707em;
-		padding-inline: var(--space-1);
+		padding-inline: var(--space-2);
+		transform: translateY(calc(var(--space-1) / 2));
 	}
 </style>
