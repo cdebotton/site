@@ -3,5 +3,12 @@
 	"editor.formatOnPaste": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
+	},
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"package.json": "pnpm-lock.yaml",
+		".eslintrc.cjs": ".eslintignore",
+		".prettierrc": ".prettierignore",
+		"+*.svelte": "+$(capture).server.ts,+$(capture).ts"
 	}
 }

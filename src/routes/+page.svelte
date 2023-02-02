@@ -44,11 +44,6 @@
 		</div>
 		<Footer />
 	</div>
-	{#each data.posts as post}
-		<article>
-			<a href={post.slug}>{post.title}</a>
-		</article>
-	{/each}
 </div>
 
 <style>

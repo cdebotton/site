@@ -10,8 +10,8 @@
 
 	import { theme } from '$lib/theme';
 
-	$: color = $theme.darkMode ? plumDark.plum2 : red.red9;
-	$: edgeColor = $theme.darkMode ? plumDark.plum10 : red.red11;
+	$: color = $theme.mode === 'VAPORWAVE' ? plumDark.plum2 : red.red9;
+	$: edgeColor = $theme.mode === 'VAPORWAVE' ? plumDark.plum10 : red.red11;
 
 	let y: number;
 

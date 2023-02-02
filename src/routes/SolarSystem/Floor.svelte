@@ -17,9 +17,9 @@
 		});
 	}).flat();
 
-	$: gridColor = $theme.darkMode ? 'hsl(229, 24.0%, 1.95%)' : indigo.indigo7;
-	$: crossColor = $theme.darkMode ? 'hsl(229, 24.0%, 3.83%)' : slate.slate5;
-	$: shadowColor = $theme.darkMode ? '#000' : indigo.indigo1;
+	$: gridColor = $theme.mode === 'VAPORWAVE' ? 'hsl(229, 24.0%, 1.95%)' : indigo.indigo7;
+	$: crossColor = $theme.mode === 'VAPORWAVE' ? 'hsl(229, 24.0%, 3.83%)' : slate.slate5;
+	$: shadowColor = $theme.mode === 'VAPORWAVE' ? '#000' : indigo.indigo1;
 
 	$: camera?.lookAt(0, 0, 0);
 </script>

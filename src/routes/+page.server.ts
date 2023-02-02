@@ -3,6 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 import { getDocs } from '$lib/getDocs';
+import { parseTheme } from '$lib/theme';
 
 export const load: PageServerLoad = async () => {
 	const posts = await getDocs();
@@ -16,10 +17,10 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
 	setTheme: async ({ url, cookies }) => {
-		const darkMode = url.searchParams.get('darkMode') === 'true';
+		const mode = parseTheme(url.searchParams.get('mode'));
 		const redirectTo = url.searchParams.get('redirectTo');
 
-		cookies.set('theme', JSON.stringify({ darkMode }), {
+		cookies.set('theme', mode, {
 			secure: true,
 			httpOnly: true,
 			path: '/',

@@ -31,14 +31,16 @@
 	let innerWidth: number;
 
 	$: camera?.lookAt(0, 0, 0);
-	$: fogColor = $theme.darkMode ? indigoDark.indigo1 : indigo.indigo1;
+	$: fogColor = $theme.mode === 'VAPORWAVE' ? indigoDark.indigo1 : indigo.indigo1;
 	$: zoom = Math.min(65 * (innerWidth / 800), 65);
 
 	ColorManagement.legacyMode = false;
 
 	let ctx: ThrelteContext;
 
-	$: ctx?.renderer?.setClearColor($theme.darkMode ? indigoDark.indigo1 : indigo.indigo1);
+	$: ctx?.renderer?.setClearColor(
+		$theme.mode === 'VAPORWAVE' ? indigoDark.indigo1 : indigo.indigo1
+	);
 </script>
 
 <svelte:window bind:innerWidth />

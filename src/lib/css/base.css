@@ -1,5 +1,5 @@
 :root,
-[data-dark='true'] {
+[data-theme='VAPORWAVE'] {
 	--color-background: var(--indigo-dark-1);
 	--color-background--subtle: var(--indigo-dark-2);
 	--color-surface: var(--indigo-dark-3);
@@ -10,7 +10,7 @@
 	--brand-purple: var(--purple-9);
 }
 
-[data-dark='false'] {
+[data-theme='EVA-02'] {
 	--color-background: var(--indigo-1);
 	--color-background--subtle: var(--indigo-2);
 	--color-surface: var(--indigo-3);

@@ -9,7 +9,7 @@
 
 	export let data: LayoutServerData;
 
-	$theme.darkMode = data.theme?.darkMode ?? true;
+	$theme.mode = data.theme;
 </script>
 
 <div class="container">
@@ -36,6 +36,7 @@
 		width: var(--width);
 		min-width: var(--min-width);
 		max-width: var(--max-width);
+		margin: 0 auto;
 	}
 
 	@media screen and (min-width: 480px) {

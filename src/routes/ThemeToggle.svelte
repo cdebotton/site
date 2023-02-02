@@ -1,26 +1,25 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import { page } from '$app/stores';
-	import { theme } from '$lib/theme';
+	import { parseTheme, theme } from '$lib/theme';
 
 	let enhanceTheme: SubmitFunction = ({ action }) => {
-		let darkMode = action.searchParams.get('darkMode');
-		if (darkMode) {
-			$theme.darkMode = darkMode === 'true';
-		}
+		$theme.mode = parseTheme(action.searchParams.get('mode'));
 	};
+
+	$: toggleTo = $theme.mode === 'VAPORWAVE' ? 'EVA-02' : 'VAPORWAVE';
 </script>
 
 <form
 	use:enhance={enhanceTheme}
 	method="POST"
-	action={`/?/setTheme&darkMode=${!$theme.darkMode}&redirectTo=${$page.url.pathname}`}
+	action={`/?/setTheme&mode=${toggleTo}&redirectTo=${$page.url.pathname}`}
 >
 	<button type="submit">
-		{#if $theme.darkMode}
-			Light
+		{#if $theme.mode === 'VAPORWAVE'}
+			EVA-02
 		{:else}
-			Dark
+			Vaporwave
 		{/if}
 	</button>
 </form>

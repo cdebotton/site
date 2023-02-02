@@ -4,9 +4,7 @@
 declare namespace App {
 	// interface Error {}
 	interface Locals {
-		theme?: {
-			darkMode?: boolean;
-		};
+		theme?: 'VAPORWAVE' | 'EVA-02';
 	}
 	// interface PageData {}
 	// interface Platform {}

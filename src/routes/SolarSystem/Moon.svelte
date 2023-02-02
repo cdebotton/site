@@ -39,7 +39,7 @@
 		}, delay);
 	});
 
-	$: color = $theme.darkMode ? plumDark.plum3 : red.red8;
+	$: color = $theme.mode === 'VAPORWAVE' ? plumDark.plum3 : red.red8;
 </script>
 
 <Instance {color} position={{ x, y, z }} scale={$scale} />
