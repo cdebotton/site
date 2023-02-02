@@ -1,13 +1,15 @@
 <script lang="ts">
 	import Footer from './Footer.svelte';
 
-	import type { PageData } from './$types';
+	import type { PageServerData } from './$types';
 
 	import Loader from '$lib/components/Loader.svelte';
 
-	export let data: PageData;
+	export let data: PageServerData;
 
 	let sceneLoader = import('./SolarSystem/Scene.svelte');
+
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -42,13 +44,11 @@
 		</div>
 		<Footer />
 	</div>
-	<div class="posts">
-		{#each data.posts as post}
-			<article>
-				<h2>{post.title}</h2>
-			</article>
-		{/each}
-	</div>
+	{#each data.posts as post}
+		<article>
+			<a href={post.slug}>{post.title}</a>
+		</article>
+	{/each}
 </div>
 
 <style>
