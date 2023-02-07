@@ -1,11 +1,9 @@
 <script lang="ts">
 	import Footer from './Footer.svelte';
 
-	import type { PageServerData } from './$types';
-
 	import Loader from '$lib/components/Loader.svelte';
 
-	let sceneLoader = import('./SolarSystem/Scene.svelte');
+	let sceneLoader = import('./SolarSystem/SceneThree.svelte');
 </script>
 
 <svelte:head>

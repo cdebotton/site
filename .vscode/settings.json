@@ -10,5 +10,7 @@
 		".eslintrc.cjs": ".eslintignore",
 		".prettierrc": ".prettierignore",
 		"+*.svelte": "+$(capture).server.ts,+$(capture).ts"
-	}
+	},
+	"frontMatter.framework.id": "other",
+	"frontMatter.content.publicFolder": ""
 }

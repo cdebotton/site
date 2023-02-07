@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { InstancedMesh } from '@threlte/core';
-	import { MeshToonMaterial } from 'three';
-	import { SphereGeometry } from 'three';
+	import { MeshToonMaterial, SphereGeometry } from 'three';
+
 	import Moon from './Moon.svelte';
 
 	let geometry = new SphereGeometry();

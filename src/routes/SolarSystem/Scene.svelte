@@ -4,15 +4,15 @@
 	import { spring } from 'svelte/motion';
 	import { ColorManagement, PCFSoftShadowMap } from 'three';
 
+	import Bounce from './Bounce.svelte';
 	import Floor from './Floor.svelte';
+	import Moons from './Moons.svelte';
 	import Planet from './Planet.svelte';
 
 	import type { OrthographicCamera } from 'three';
 
 	import { supportsTouch } from '$lib/supportsTouch';
 	import { theme } from '$lib/theme';
-	import Moons from './Moons.svelte';
-	import Bounce from './Bounce.svelte';
 
 	/**
 	 * Spin the camera with the mouse movement.
@@ -53,7 +53,7 @@
 	<T.OrthographicCamera bind:ref={camera} {zoom} makeDefault position={[10, 20, 20]} />
 	<T.DirectionalLight intensity={0.4} />
 	<T.PointLight castShadow position.y={14} intensity={1} />
-	<T.Group rotation.y={$cameraY}>
+	<T.Group position.y={-2} rotation.y={$cameraY}>
 		<Bounce>
 			<Planet />
 			<Moons count={750} />

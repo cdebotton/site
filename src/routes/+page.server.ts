@@ -1,8 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 
-import { getDocs } from '$lib/getDocs';
 import { parseTheme } from '$lib/theme';
 
 export const actions: Actions = {

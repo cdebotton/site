@@ -6,7 +6,7 @@
 
 	useFrame(({ clock }) => {
 		let t = quadInOut((clock.getElapsedTime() / 8) % 1) * Math.PI;
-		y = Math.sin(t) * 5 + 2;
+		y = Math.sin(t) * 5 + 1;
 	});
 </script>
 
