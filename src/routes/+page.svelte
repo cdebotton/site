@@ -1,9 +1,5 @@
 <script lang="ts">
 	import Footer from './Footer.svelte';
-
-	import Loader from '$lib/components/Loader.svelte';
-
-	let sceneLoader = import('./SolarSystem/SceneThree.svelte');
 </script>
 
 <svelte:head>
@@ -13,14 +9,6 @@
 		content="Software engineer, photographer, and videographer based in San Francisco."
 	/>
 </svelte:head>
-
-<div class="canvas">
-	{#await sceneLoader}
-		<Loader />
-	{:then { default: Scene }}
-		<Scene />
-	{/await}
-</div>
 
 <div class="content">
 	<div class="fold">
@@ -41,12 +29,6 @@
 </div>
 
 <style>
-	.canvas {
-		position: fixed;
-		z-index: 0;
-		inset: 0;
-	}
-
 	.content {
 		position: relative;
 		display: grid;

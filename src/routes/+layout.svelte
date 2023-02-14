@@ -3,14 +3,25 @@
 
 	import Header from './Header.svelte';
 
+	import Loader from '$lib/components/Loader.svelte';
+	import { theme } from '$lib/theme';
+
 	import type { LayoutServerData } from './$types';
 
-	import { theme } from '$lib/theme';
+	let sceneLoader = import('$lib/components/DynamicBackground/Canvas.svelte');
 
 	export let data: LayoutServerData;
 
 	$theme.mode = data.theme;
 </script>
+
+<div class="canvas">
+	{#await sceneLoader}
+		<Loader />
+	{:then { default: Scene }}
+		<Scene />
+	{/await}
+</div>
 
 <div class="container">
 	<Header />
@@ -20,6 +31,12 @@
 </div>
 
 <style>
+	.canvas {
+		position: fixed;
+		z-index: 0;
+		inset: 0;
+	}
+
 	.container {
 		--width: 100%;
 		--min-width: 20rem;
