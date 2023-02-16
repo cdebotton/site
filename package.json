@@ -62,9 +62,10 @@
 		"@trpc/client": "^10.11.1",
 		"@trpc/server": "^10.11.1",
 		"maath": "^0.5.2",
-		"mdsvex": "^0.10.6",
 		"motion": "^10.15.5",
-		"three": "^0.149.0",
+		"postprocessing": "^6.29.3",
+		"three": "0.147.0",
+		"three-stdlib": "^2.21.8",
 		"trpc-sveltekit": "^3.2.9",
 		"zod": "3.20.6"
 	}

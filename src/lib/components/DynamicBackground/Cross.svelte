@@ -2,6 +2,7 @@
 	import { Instance } from '@threlte/core';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
+
 	import { colors } from './colors';
 
 	export let x: number;

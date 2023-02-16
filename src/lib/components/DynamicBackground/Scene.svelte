@@ -1,33 +1,92 @@
 <script lang="ts">
-	import { useThrelte, T, InstancedMesh, useFrame } from '@threlte/core';
+	import { useThrelte, T, InstancedMesh, useFrame, Three } from '@threlte/core';
 	import { Edges, useGltf } from '@threlte/extras';
+	import { damp } from 'maath/easing';
+	import {
+		BlendFunction,
+		EffectComposer,
+		RenderPass,
+		NormalPass,
+		EffectPass,
+		SSAOEffect
+	} from 'postprocessing';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
+	import { writable } from 'svelte/store';
 	import {
+		Color,
 		ColorManagement,
+		HalfFloatType,
 		MeshBasicMaterial,
 		OrthographicCamera,
 		SphereGeometry,
 		Vector2
 	} from 'three';
-	import { colors } from './colors';
+	import { isWebGL2Available } from 'three-stdlib';
+
 	import Cross from './Cross.svelte';
 	import Moon from './Moon.svelte';
-	import { damp } from 'maath/easing';
-	import { writable } from 'svelte/store';
+	import { MeshTransmissionMaterial } from './TransmissionMaterial';
+	import { colors } from './colors';
 
 	const MOON_COUNT = 750;
-	const GRID_SIZE = 100;
+	const GRID_SIZE = 50;
 	const GRID_GAP = 2;
 	const ORBIT_RADIUS = 8;
 
-	let { renderer, invalidate, size, camera } = useThrelte();
+	let ctx = useThrelte();
+	let { renderer, invalidate, size, camera } = ctx;
+
+	let hasGL2 = isWebGL2Available();
 
 	ColorManagement.legacyMode = false;
 
+	let composer = new EffectComposer(renderer, {
+		multisampling: hasGL2 ? 8 : 0,
+		frameBufferType: HalfFloatType
+	});
+	ctx.composer?.dispose();
+	// Blast away the types.
+	ctx.composer = composer as any;
+	let { scene } = ctx;
+
+	$: if (renderer && $camera) {
+		composer.removeAllPasses();
+		let renderPass = new RenderPass(scene, $camera);
+		let normalPass = new NormalPass(scene, $camera);
+		composer.addPass(renderPass);
+		composer.addPass(normalPass);
+
+		// eslint-disable-next-line
+		// @ts-ignore
+		let ssaoPass = new SSAOEffect($camera, normalPass.texture, {
+			blendFunction: BlendFunction.MULTIPLY,
+			samples: 5,
+			radius: 0.15,
+			rings: 4,
+			intensity: 30,
+			distanceThreshold: 1.0,
+			distanceFalloff: 0.0,
+			rangeThreshold: 0.5,
+			rangeFalloff: 0.1,
+			luminanceInfluence: 0.6,
+			color: new Color('red'),
+			// eslint-disable-next-line
+			// @ts-ignore
+			bias: 0.5,
+			resolutionScale: 1,
+			depthAwareUpsampling: true
+		});
+
+		let effectPass = new EffectPass($camera, ssaoPass);
+		composer.addPass(effectPass);
+
+		composer.render();
+	}
+
 	// Set colors to theme
-	$: {
-		renderer?.setClearColor($colors.surface);
+	$: if (renderer) {
+		renderer.setClearColor($colors.surface);
 		invalidate();
 	}
 
@@ -113,7 +172,8 @@
 			seed: Math.random() * 51421,
 			distance: distance + 4,
 			y: Math.sin(i),
-			speed
+			speed,
+			delay: distance * 200 + 1000
 		};
 	});
 
@@ -139,9 +199,30 @@
 <T.Group position.y={bounceY}>
 	<!-- Planet -->
 	<T.Mesh castShadow scale={$planetScale} rotation={[planetRotationX, 0, planetRotationZ]}>
-		<T.OctahedronGeometry args={[3, 3]} />
-		<T.MeshToonMaterial color={$colors.fg} />
+		<T.BoxGeometry args={[4, 4, 4]} />
+		<!-- <T.MeshToonMaterial color={$colors.fg} /> -->
+		<Three
+			type={MeshTransmissionMaterial}
+			clearcoat={1}
+			reflectivity={10}
+			distortion={1.2}
+			ior={1.5}
+			thickness={2}
+			roughness={0.325}
+			specularIntensity={1}
+			distortionScale={0.25}
+			transmission={1.0}
+			temporalDistortion={0.3}
+			background={$colors.surface}
+			color={$colors.fg}
+			args={[8]}
+		/>
 		<Edges color={$colors.accent} />
+	</T.Mesh>
+
+	<T.Mesh scale={$planetScale * 0.5} rotation={[planetRotationX, 0, planetRotationZ]}>
+		<T.SphereGeometry args={[3]} />
+		<T.MeshToonMaterial color={$colors.fg} />
 	</T.Mesh>
 
 	<!-- Moons -->

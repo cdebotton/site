@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
 	import { PCFSoftShadowMap } from 'three';
+
 	import Scene from './Scene.svelte';
 </script>
 
@@ -11,6 +12,7 @@
 		antialias: false,
 		alpha: false,
 		stencil: false,
+		depth: false,
 		powerPreference: 'high-performance'
 	}}
 >

@@ -1,26 +1,36 @@
 <script lang="ts">
 	import '$lib/css/base.css';
 
+	import { onMount } from 'svelte';
+
 	import Header from './Header.svelte';
+
+	import type { LayoutServerData } from './$types';
 
 	import Loader from '$lib/components/Loader.svelte';
 	import { theme } from '$lib/theme';
 
-	import type { LayoutServerData } from './$types';
-
-	let sceneLoader = import('$lib/components/DynamicBackground/Canvas.svelte');
-
 	export let data: LayoutServerData;
+
+	let sceneLoader:
+		| Promise<typeof import('$lib/components/DynamicBackground/Canvas.svelte')>
+		| undefined;
+
+	onMount(() => {
+		sceneLoader = import('$lib/components/DynamicBackground/Canvas.svelte');
+	});
 
 	$theme.mode = data.theme;
 </script>
 
 <div class="canvas">
-	{#await sceneLoader}
-		<Loader />
-	{:then { default: Scene }}
-		<Scene />
-	{/await}
+	{#if sceneLoader}
+		{#await sceneLoader}
+			<Loader />
+		{:then { default: Scene }}
+			<Scene />
+		{/await}
+	{/if}
 </div>
 
 <div class="container">

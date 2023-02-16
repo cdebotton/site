@@ -25,7 +25,6 @@
 
 	header {
 		position: sticky;
-		margin: 0 auto;
 		z-index: 10;
 		top: var(--space-4);
 		display: flex;
@@ -33,6 +32,7 @@
 		min-width: var(--min-width);
 		max-width: var(--max-width);
 		align-items: flex-start;
+		margin: 0 auto;
 	}
 
 	.logo {

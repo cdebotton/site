@@ -1,4 +1,14 @@
-import { indigoDark, orange, plumDark, red, slate, slateDark, violetDark } from '@radix-ui/colors';
+import {
+	green,
+	greenDark,
+	indigoDark,
+	orange,
+	plumDark,
+	red,
+	slate,
+	slateDark,
+	violetDark
+} from '@radix-ui/colors';
 import { derived } from 'svelte/store';
 
 import { theme } from '$lib/theme';
@@ -12,16 +22,18 @@ export const colors = derived(theme, ({ mode }) => {
 				surfaceSubtle2: slate.slate5,
 				fg: red.red10,
 				fgSubtle: orange.orange2,
-				accent: orange.orange8
+				accent: orange.orange8,
+				accent2: green.green8
 			};
 		case 'VAPORWAVE':
 			return {
 				surface: indigoDark.indigo1,
 				surfaceSubtle: slateDark.slate5,
 				surfaceSubtle2: slateDark.slate7,
-				fg: plumDark.plum4,
+				fg: plumDark.plum11,
 				fgSubtle: violetDark.violet4,
-				accent: plumDark.plum10
+				accent: plumDark.plum10,
+				accent2: greenDark.green8
 			};
 		default:
 			throw new Error('Invalid theme');
