@@ -2,6 +2,7 @@
 	import { Instance } from '@threlte/core';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
+	import { Color } from 'three';
 
 	import { colors } from './colors';
 
@@ -21,7 +22,7 @@
 </script>
 
 <Instance
-	color={$colors.surfaceSubtle2}
+	color={new Color($colors.surfaceSubtle2)}
 	position={{ x, y: $y, z }}
 	scale={{ x: 0.04 * $scale, y: 1, z: 0.125 * $scale }}
 />

@@ -2,6 +2,7 @@
 	import { Instance, useFrame } from '@threlte/core';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
+	import { Color } from 'three';
 
 	import { colors } from './colors';
 
@@ -30,4 +31,8 @@
 	});
 </script>
 
-<Instance scale={scale * $scaleMultiplier} color={$colors.fgSubtle} position={{ x, y, z }} />
+<Instance
+	scale={scale * $scaleMultiplier}
+	color={new Color($colors.fgSubtle)}
+	position={{ x, y, z }}
+/>

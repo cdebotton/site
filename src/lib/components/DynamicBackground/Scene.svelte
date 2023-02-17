@@ -8,7 +8,8 @@
 		RenderPass,
 		NormalPass,
 		EffectPass,
-		SSAOEffect
+		SSAOEffect,
+		DepthDownsamplingPass
 	} from 'postprocessing';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
@@ -22,44 +23,52 @@
 		SphereGeometry,
 		Vector2
 	} from 'three';
-	import { isWebGL2Available } from 'three-stdlib';
 
 	import Cross from './Cross.svelte';
 	import Moon from './Moon.svelte';
 	import { MeshTransmissionMaterial } from './TransmissionMaterial';
 	import { colors } from './colors';
 
-	const MOON_COUNT = 750;
+	const MOON_COUNT = 1000;
 	const GRID_SIZE = 50;
 	const GRID_GAP = 2;
 	const ORBIT_RADIUS = 8;
 
 	let ctx = useThrelte();
-	let { renderer, invalidate, size, camera } = ctx;
-
-	let hasGL2 = isWebGL2Available();
+	let { renderer, size, camera } = ctx;
 
 	ColorManagement.legacyMode = false;
 
-	let composer = new EffectComposer(renderer, {
-		multisampling: hasGL2 ? 8 : 0,
-		frameBufferType: HalfFloatType
-	});
-	ctx.composer?.dispose();
-	// Blast away the types.
-	ctx.composer = composer as any;
-	let { scene } = ctx;
-
 	$: if (renderer && $camera) {
+		let composer = new EffectComposer(renderer, {
+			multisampling: renderer.capabilities.isWebGL2 ? 8 : 0,
+			frameBufferType: HalfFloatType
+		});
+
+		ctx.composer?.dispose();
+		// Blast away the types.
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		ctx.composer = composer as any;
+		let { scene } = ctx;
 		composer.removeAllPasses();
 		let renderPass = new RenderPass(scene, $camera);
 		let normalPass = new NormalPass(scene, $camera);
 		composer.addPass(renderPass);
 		composer.addPass(normalPass);
 
+		let downsamplePass: DepthDownsamplingPass | undefined;
+
+		if (renderer.capabilities.isWebGL2) {
+			downsamplePass = new DepthDownsamplingPass({
+				normalBuffer: normalPass.texture,
+				resolutionScale: 0.5
+			});
+			composer.addPass(downsamplePass);
+		}
+
 		// eslint-disable-next-line
 		// @ts-ignore
-		let ssaoPass = new SSAOEffect($camera, normalPass.texture, {
+		let ssaoEffect = new SSAOEffect($camera, normalPass.texture, {
 			blendFunction: BlendFunction.MULTIPLY,
 			samples: 5,
 			radius: 0.15,
@@ -70,28 +79,28 @@
 			rangeThreshold: 0.5,
 			rangeFalloff: 0.1,
 			luminanceInfluence: 0.6,
-			color: new Color('red'),
+			// eslint-disable-next-line
+			// @ts-ignore
+			color: 'red',
 			// eslint-disable-next-line
 			// @ts-ignore
 			bias: 0.5,
+			normalDepthBuffer: downsamplePass?.texture,
 			resolutionScale: 1,
 			depthAwareUpsampling: true
 		});
 
-		let effectPass = new EffectPass($camera, ssaoPass);
+		let effectPass = new EffectPass($camera, ssaoEffect);
 		composer.addPass(effectPass);
 
 		composer.render();
 	}
 
-	// Set colors to theme
-	$: if (renderer) {
-		renderer.setClearColor($colors.surface);
-		invalidate();
-	}
+	$: ctx.scene.background = new Color($colors.surface);
 
 	// Track pointer
 	let pointer = writable(new Vector2());
+
 	onMount(() => {
 		function handler(event: PointerEvent) {
 			pointer.update((vec) => {
@@ -186,7 +195,7 @@
 </script>
 
 <!-- Camera -->
-<T.OrthographicCamera makeDefault position={[10, 20, 20]} />
+<T.OrthographicCamera makeDefault position={[10, 20, 20]} far={100} />
 
 <!-- Lights -->
 <T.DirectionalLight intensity={0.4} />
@@ -200,7 +209,6 @@
 	<!-- Planet -->
 	<T.Mesh castShadow scale={$planetScale} rotation={[planetRotationX, 0, planetRotationZ]}>
 		<T.BoxGeometry args={[4, 4, 4]} />
-		<!-- <T.MeshToonMaterial color={$colors.fg} /> -->
 		<Three
 			type={MeshTransmissionMaterial}
 			clearcoat={1}
