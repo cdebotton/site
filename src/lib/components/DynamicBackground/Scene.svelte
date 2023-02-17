@@ -9,7 +9,9 @@
 		NormalPass,
 		EffectPass,
 		SSAOEffect,
-		DepthDownsamplingPass
+		DepthDownsamplingPass,
+		SMAAEffect,
+		SMAAPreset
 	} from 'postprocessing';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
@@ -66,31 +68,34 @@
 			composer.addPass(downsamplePass);
 		}
 
-		// eslint-disable-next-line
-		// @ts-ignore
 		let ssaoEffect = new SSAOEffect($camera, normalPass.texture, {
 			blendFunction: BlendFunction.MULTIPLY,
-			samples: 5,
+			samples: 32,
 			radius: 0.15,
 			rings: 4,
-			intensity: 30,
+			intensity: 20,
 			distanceThreshold: 1.0,
 			distanceFalloff: 0.0,
 			rangeThreshold: 0.5,
 			rangeFalloff: 0.1,
-			luminanceInfluence: 0.6,
+			luminanceInfluence: 0.16,
+			color: new Color($colors.accent),
 			// eslint-disable-next-line
 			// @ts-ignore
-			color: 'red',
-			// eslint-disable-next-line
-			// @ts-ignore
-			bias: 0.5,
+			bias: 0.4,
 			normalDepthBuffer: downsamplePass?.texture,
-			resolutionScale: 1,
-			depthAwareUpsampling: true
+			resolutionScale: 0.5,
+			depthAwareUpsampling: true,
+			worldDistanceThreshold: 28,
+			worldDistanceFalloff: 5,
+			worldProximityThreshold: 10,
+			worldProximityFalloff: 0
 		});
 
-		let effectPass = new EffectPass($camera, ssaoEffect);
+		let smaaEffect = new SMAAEffect({ preset: SMAAPreset.ULTRA });
+
+		let effectPass = new EffectPass($camera, ssaoEffect, smaaEffect);
+
 		composer.addPass(effectPass);
 
 		composer.render();
@@ -202,7 +207,7 @@
 <T.PointLight castShadow intensity={0.8} position={[-4, 10, 0]} />
 
 <!-- Fog -->
-<T.Fog attach="fog" color={$colors.surface} near={24} far={37} />
+<T.Fog attach="fog" color={$colors.surface} near={31} far={36} />
 
 <!-- Bounce -->
 <T.Group position.y={bounceY}>
@@ -234,7 +239,12 @@
 	</T.Mesh>
 
 	<!-- Moons -->
-	<InstancedMesh castShadow geometry={new SphereGeometry()} material={new MeshBasicMaterial()}>
+	<InstancedMesh
+		receiveShadow
+		castShadow
+		geometry={new SphereGeometry()}
+		material={new MeshBasicMaterial()}
+	>
 		{#each moonData as { key, ...moon } (key)}
 			<Moon {...moon} />
 		{/each}

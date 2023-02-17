@@ -39,17 +39,44 @@
 
 <style>
 	footer {
+		isolation: isolate;
 		position: relative;
 		z-index: 10;
 		display: flex;
 		width: var(--width);
+		margin: 0 auto;
 		min-width: var(--min-width);
 		max-width: var(--max-width);
 		justify-content: space-between;
+		padding: var(--space-2);
+		align-items: center;
+	}
+
+	footer::before {
+		z-index: -1;
+		content: ' ';
+		display: block;
+		position: absolute;
+		inset: 0;
+		background-color: hsl(0 0% 100% / 0.03);
+		backdrop-filter: blur(8px);
+		border-radius: 7px;
+	}
+
+	:global([data-theme='EVA-02']) footer {
+		background-color: hsl(0 0% 0% / 0.03);
 	}
 
 	ul {
 		display: flex;
-		gap: var(--space-4);
+	}
+
+	li {
+		border-right: 1px solid hsl(0 0% 100% / 0.03);
+		padding: 0 var(--space-4);
+	}
+
+	:global([data-theme='EVA-02']) li {
+		border-right-color: hsl(0 0% 0% / 0.04);
 	}
 </style>

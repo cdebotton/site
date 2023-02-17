@@ -1,7 +1,3 @@
-<script lang="ts">
-	import Footer from './Footer.svelte';
-</script>
-
 <svelte:head>
 	<title>Christian de Botton</title>
 	<meta
@@ -24,7 +20,6 @@
 				manager and an individual contributor.
 			</p>
 		</div>
-		<Footer />
 	</div>
 </div>
 

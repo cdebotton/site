@@ -9,6 +9,7 @@
 
 	import Loader from '$lib/components/Loader.svelte';
 	import { theme } from '$lib/theme';
+	import Footer from './Footer.svelte';
 
 	export let data: LayoutServerData;
 
@@ -38,6 +39,7 @@
 	<main>
 		<slot />
 	</main>
+	<Footer />
 </div>
 
 <style>
@@ -54,7 +56,7 @@
 		display: grid;
 		min-height: 100%;
 		gap: var(--space-12);
-		grid-template-rows: min-content auto;
+		grid-template-rows: min-content auto min-content;
 		padding-block: var(--space-5);
 		padding-inline: var(--space-5);
 	}
@@ -64,6 +66,7 @@
 		min-width: var(--min-width);
 		max-width: var(--max-width);
 		margin: 0 auto;
+		padding: 0 var(--space-4);
 	}
 
 	@media screen and (min-width: 480px) {

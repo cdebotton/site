@@ -1,8 +1,7 @@
 import {
-	green,
-	greenDark,
 	indigoDark,
 	orange,
+	orangeDark,
 	plumDark,
 	red,
 	slate,
@@ -21,9 +20,8 @@ export const colors = derived(theme, ({ mode }) => {
 				surfaceSubtle: slate.slate4,
 				surfaceSubtle2: slate.slate5,
 				fg: red.red10,
-				fgSubtle: orange.orange2,
-				accent: orange.orange8,
-				accent2: green.green8
+				fgSubtle: orangeDark.orange11,
+				accent: orange.orange8
 			};
 		case 'VAPORWAVE':
 			return {
@@ -32,8 +30,7 @@ export const colors = derived(theme, ({ mode }) => {
 				surfaceSubtle2: slateDark.slate7,
 				fg: plumDark.plum11,
 				fgSubtle: violetDark.violet4,
-				accent: plumDark.plum10,
-				accent2: greenDark.green8
+				accent: plumDark.plum10
 			};
 		default:
 			throw new Error('Invalid theme');
