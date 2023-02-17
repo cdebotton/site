@@ -80,16 +80,14 @@
 			rangeFalloff: 0.1,
 			luminanceInfluence: 0.16,
 			color: new Color($colors.accent),
-			// eslint-disable-next-line
-			// @ts-ignore
-			bias: 0.4,
+			bias: 0.5,
 			normalDepthBuffer: downsamplePass?.texture,
 			resolutionScale: 0.5,
 			depthAwareUpsampling: true,
-			worldDistanceThreshold: 28,
+			worldDistanceThreshold: 31,
 			worldDistanceFalloff: 5,
-			worldProximityThreshold: 10,
-			worldProximityFalloff: 0
+			worldProximityThreshold: 25,
+			worldProximityFalloff: 0.25
 		});
 
 		let smaaEffect = new SMAAEffect({ preset: SMAAPreset.ULTRA });
