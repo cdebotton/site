@@ -21,9 +21,10 @@
 		ColorManagement,
 		HalfFloatType,
 		MeshBasicMaterial,
-		OrthographicCamera,
 		SphereGeometry,
-		Vector2
+		Vector2,
+		type Object3D,
+		type OrthographicCamera
 	} from 'three';
 
 	import Cross from './Cross.svelte';
@@ -124,9 +125,13 @@
 		};
 	});
 
+	function isOrthographicCamera(camera?: Object3D): camera is OrthographicCamera {
+		return camera?.type === 'OrthographicCamera';
+	}
+
 	// Setup camera
-	$: if ($camera && $camera instanceof OrthographicCamera) {
-		$camera.zoom = Math.min(65 * ($size.width / 800), 65);
+	$: if (isOrthographicCamera($camera)) {
+		$camera.zoom = Math.min(45 * ($size.width / 800), 45);
 		$camera.updateProjectionMatrix();
 	}
 
@@ -136,7 +141,7 @@
 	});
 
 	// Setup floor
-	let { gltf: crossGltf } = useGltf('/assets/glb/cross.glb');
+	let { gltf: crossGltf } = useGltf('/assets/glb/cross-fancy.glb');
 	const EDGE_NODES = GRID_SIZE / GRID_GAP + 1;
 	let crossData = Array.from({ length: EDGE_NODES }, (_, z) => {
 		return Array.from({ length: EDGE_NODES }, (_, x) => {
@@ -257,7 +262,7 @@
 	</T.Mesh>
 	<T.GridHelper args={[GRID_SIZE, GRID_SIZE, $colors.surfaceSubtle, $colors.surfaceSubtle]} />
 	{#if $crossGltf}
-		<InstancedMesh geometry={$crossGltf.nodes['Cross'].geometry} material={new MeshBasicMaterial()}>
+		<InstancedMesh geometry={$crossGltf.nodes['cross'].geometry} material={new MeshBasicMaterial()}>
 			{#each crossData as { key, ...cross } (key)}
 				<Cross {...cross} />
 			{/each}

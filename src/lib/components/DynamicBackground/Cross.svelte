@@ -24,5 +24,5 @@
 <Instance
 	color={new Color($colors.surfaceSubtle2)}
 	position={{ x, y: $y, z }}
-	scale={{ x: 0.04 * $scale, y: 1, z: 0.125 * $scale }}
+	scale={{ x: $scale, y: 1, z: $scale }}
 />

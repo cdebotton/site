@@ -39,28 +39,28 @@
 
 <style>
 	footer {
-		isolation: isolate;
 		position: relative;
 		z-index: 10;
 		display: flex;
 		width: var(--width);
-		margin: 0 auto;
 		min-width: var(--min-width);
 		max-width: var(--max-width);
+		align-items: center;
 		justify-content: space-between;
 		padding: var(--space-2);
-		align-items: center;
+		margin: 0 auto;
+		isolation: isolate;
 	}
 
 	footer::before {
-		z-index: -1;
-		content: ' ';
-		display: block;
 		position: absolute;
-		inset: 0;
-		background-color: hsl(0 0% 100% / 0.03);
-		backdrop-filter: blur(8px);
+		z-index: -1;
+		display: block;
 		border-radius: 7px;
+		backdrop-filter: blur(8px);
+		background-color: hsl(0 0% 100% / 0.03);
+		content: ' ';
+		inset: 0;
 	}
 
 	:global([data-theme='EVA-02']) footer {
@@ -72,8 +72,8 @@
 	}
 
 	li {
-		border-right: 1px solid hsl(0 0% 100% / 0.03);
 		padding: 0 var(--space-4);
+		border-right: 1px solid hsl(0 0% 100% / 0.03);
 	}
 
 	:global([data-theme='EVA-02']) li {

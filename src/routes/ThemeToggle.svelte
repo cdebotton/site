@@ -31,9 +31,10 @@
 		color: inherit;
 		cursor: pointer;
 		font-family: inherit;
-		font-size: var(--text-sm);
+		font-size: inherit;
 		font-weight: 900;
 		letter-spacing: var(--tracking-tighter);
+		line-height: var(--leading-none);
 		text-transform: uppercase;
 	}
 

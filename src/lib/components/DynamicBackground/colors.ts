@@ -1,13 +1,4 @@
-import {
-	indigoDark,
-	orange,
-	orangeDark,
-	plumDark,
-	red,
-	slate,
-	slateDark,
-	violetDark
-} from '@radix-ui/colors';
+import { indigoDark, orange, plumDark, red, slate, slateDark, violetDark } from '@radix-ui/colors';
 import { derived } from 'svelte/store';
 
 import { theme } from '$lib/theme';
@@ -20,7 +11,7 @@ export const colors = derived(theme, ({ mode }) => {
 				surfaceSubtle: slate.slate4,
 				surfaceSubtle2: slate.slate5,
 				fg: red.red10,
-				fgSubtle: orangeDark.orange11,
+				fgSubtle: orange.orange8,
 				accent: orange.orange8
 			};
 		case 'VAPORWAVE':

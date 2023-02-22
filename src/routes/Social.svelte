@@ -11,7 +11,6 @@
 	a {
 		display: inline-block;
 		color: var(--color-text);
-		font-size: var(--text-md);
 		padding-block: var(--space-2);
 		padding-inline: var(--space-3);
 	}

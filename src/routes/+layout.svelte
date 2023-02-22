@@ -3,13 +3,13 @@
 
 	import { onMount } from 'svelte';
 
+	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
 
 	import type { LayoutServerData } from './$types';
 
 	import Loader from '$lib/components/Loader.svelte';
 	import { theme } from '$lib/theme';
-	import Footer from './Footer.svelte';
 
 	export let data: LayoutServerData;
 
@@ -65,8 +65,8 @@
 		width: var(--width);
 		min-width: var(--min-width);
 		max-width: var(--max-width);
-		margin: 0 auto;
 		padding: 0 var(--space-4);
+		margin: 0 auto;
 	}
 
 	@media screen and (min-width: 480px) {
