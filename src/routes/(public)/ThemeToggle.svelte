@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import { page } from '$app/stores';
+	import Button from '$lib/components/Button.svelte';
 	import { parseTheme, theme } from '$lib/theme';
 
 	let enhanceTheme: SubmitFunction = ({ action }) => {
@@ -15,13 +16,13 @@
 	method="POST"
 	action={`/?/setTheme&mode=${toggleTo}&redirectTo=${$page.url.pathname}`}
 >
-	<button type="submit">
+	<Button type="submit">
 		{#if $theme.mode === 'VAPORWAVE'}
 			EVA-02
 		{:else}
 			Vaporwave
 		{/if}
-	</button>
+	</Button>
 </form>
 
 <style>

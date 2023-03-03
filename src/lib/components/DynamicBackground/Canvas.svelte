@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
-	import { PCFSoftShadowMap } from 'three';
+	import { PCFSoftShadowMap, ColorManagement } from 'three';
 
 	import Scene from './Scene.svelte';
+
+	// @ts-expect-error @types/three hasn't been updated.
+	// ColorManagement.legacyMode = false -> ColorManagement.enabled = true
+	ColorManagement.enabled = true;
 </script>
 
 <Canvas

@@ -1,0 +1,47 @@
+[
+	{
+		"company": "Vimeo",
+		"experiences": [
+			{
+				"dates": ["2020-02-01T00:00:00Z", "2023-01-01T00:00:00Z"],
+				"title": "Senior Principal Engineer",
+				"team": "Frontend Platform",
+				"details": [
+					"Wrote an internal tool that reads the documentation blocks from PHP API controllers and generates Typescript types and React hooks to ensure consistency across products and reduce runtime errors resulting from variations in API expectations.",
+					"Designed and deployed infrastructure for availability audits which would run a series of e2e tests on routes using puppeteer in cloud functions, blocking deployments if failures are detected.",
+					"Wrote research and plan to migrate from PHP + Javascript hybrid deployment to a Node.js Server Rendering deployment.",
+					"Rewrote the translation tool, which was originally a babel plugin in Rust, reducing memory consumption from 4GB to under 100KB, and execution time on a cold run from over an hour to under 6 seconds."
+				]
+			},
+			{
+				"dates": ["2019-02-01T00:00:00Z", "2020-01-01T00:00:00Z"],
+				"title": "Senior Engineering Manager",
+				"team": "Frontend Platform",
+				"details": [
+					"Architected the application monorepo, moving from a single workspace that had frequent build errors due to different environments attempting to share resources."
+				]
+			},
+			{
+				"dates": ["2018-12-01T00:00:00Z", "2019-02-01T00:00:00Z"],
+				"title": "Engineering Manager",
+				"team": "Video Distribution",
+				"details": []
+			},
+			{
+				"dates": ["2017-11-01T00:00:00Z", "2019-10-01T00:00:00Z"],
+				"title": "Engineering Manager",
+				"team": "Design Systems",
+				"details": []
+			},
+			{
+				"dates": ["2017-02-01T00:00:00Z", "2017-11-01T00:00:00Z"],
+				"title": "Lead Engineer",
+				"team": "Player Tools",
+				"details": [
+					"Built integration for Adobe Premiere and After Effects to upload directly from the timeline to Vimeo.",
+					"Architected and built live chat feature to launch alongside Vimeo's livestreaming service. The application lived along side multiple players on the site as well as with our embeddable player."
+				]
+			}
+		]
+	}
+]
